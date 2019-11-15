@@ -20,21 +20,21 @@ RSpec.describe Alimentos do
 		lentejas = 		{ nombre: "Lentejas", 		proteina: 23.5, carb_hidr: 52, 	lipido: 1.4, 	gei: 0.4, 	terreno: 3.4 }
 		nuez = 			{ nombre: "Nuez", 		proteina: 20, 	carb_hidr: 21, 	lipido: 54, 	gei: 0.3, 	terreno: 7.9 }
 
-		@alimento1 = Alimento.new(carne_de_vaca[:nombre])
-		@alimento2 = Alimento.new(carne_de_cordero[:nombre])
-		@alimento3 = Alimento.new(camarones[:nombre])
-		@alimento4 = Alimento.new(chocolate[:nombre])
-		@alimento5 = Alimento.new(salmon[:nombre])
-		@alimento6 = Alimento.new(cerdo[:nombre])
-		@alimento7 = Alimento.new(pollo[:nombre])
-		@alimento8 = Alimento.new(queso[:nombre])
-		@alimento9 = Alimento.new(cerveza[:nombre])
-		@alimento10 = Alimento.new(leche_de_vaca[:nombre])
-		@alimento11 = Alimento.new(huevos[:nombre])
-		@alimento12 = Alimento.new(cafe[:nombre])
-		@alimento13 = Alimento.new(tofu[:nombre])
-		@alimento14 = Alimento.new(lentejas[:nombre])
-		@alimento15 = Alimento.new(nuez[:nombre])
+		@alimento1 = Alimento.new(carne_de_vaca[:nombre],carne_de_vaca[:proteina],carne_de_vaca[:carb_hidr],carne_de_vaca[:lipido],carne_de_vaca[:gei],carne_de_vaca[:terreno])
+		@alimento2 = Alimento.new(carne_de_cordero[:nombre],carne_de_cordero[:proteina],carne_de_cordero[:carb_hidr],carne_de_cordero[:lipido],carne_de_cordero[:gei],carne_de_cordero[:terreno])
+		@alimento3 = Alimento.new(camarones[:nombre],camarones[:proteina],camarones[:carb_hidr],camarones[:lipido],camarones[:gei],camarones[:terreno])
+		@alimento4 = Alimento.new(chocolate[:nombre],chocolate[:proteina],chocolate[:carb_hidr],chocolate[:lipido],chocolate[:gei],chocolate[:terreno])
+		@alimento5 = Alimento.new(salmon[:nombre],salmon[:proteina],salmon[:carb_hidr],salmon[:lipido],salmon[:gei],salmon[:terreno])
+		@alimento6 = Alimento.new(cerdo[:nombre],cerdo[:proteina],cerdo[:carb_hidr],cerdo[:lipido],cerdo[:gei],cerdo[:terreno])
+		@alimento7 = Alimento.new(pollo[:nombre],pollo[:proteina],pollo[:carb_hidr],pollo[:lipido],pollo[:gei],pollo[:terreno])
+		@alimento8 = Alimento.new(queso[:nombre],queso[:proteina],queso[:carb_hidr],queso[:lipido],queso[:gei],queso[:terreno])
+		@alimento9 = Alimento.new(cerveza[:nombre],cerveza[:proteina],cerveza[:carb_hidr],cerveza[:lipido],cerveza[:gei],cerveza[:terreno])
+		@alimento10 = Alimento.new(leche_de_vaca[:nombre],leche_de_vaca[:proteina],leche_de_vaca[:carb_hidr],leche_de_vaca[:lipido],leche_de_vaca[:gei],leche_de_vaca[:terreno])
+		@alimento11 = Alimento.new(huevos[:nombre],huevos[:proteina],huevos[:carb_hidr],huevos[:lipido],huevos[:gei],huevos[:terreno])
+		@alimento12 = Alimento.new(cafe[:nombre],cafe[:proteina],cafe[:carb_hidr],cafe[:lipido],cafe[:gei],cafe[:terreno])
+		@alimento13 = Alimento.new(tofu[:nombre],tofu[:proteina],tofu[:carb_hidr],tofu[:lipido],tofu[:gei],tofu[:terreno])
+		@alimento14 = Alimento.new(lentejas[:nombre],lentejas[:proteina],lentejas[:carb_hidr],lentejas[:lipido],lentejas[:gei],lentejas[:terreno])
+		@alimento15 = Alimento.new(nuez[:nombre],nuez[:proteina],nuez[:carb_hidr],nuez[:lipido],nuez[:gei],nuez[:terreno])
 	end
 
 	it "has a version number" do
@@ -71,6 +71,26 @@ RSpec.describe Alimentos do
 
 	it "existe el método para acceder al nombre" do
 		expect(@alimento1.nombre).to eq("Carne de vaca")
+	end
+
+	it "existe el método para acceder a la proteina" do
+		expect(@alimento1.proteina).to eq(21.1)
+	end
+
+	it "existe el método para acceder al carbo hidrato" do
+		expect(@alimento1.carb_hidr).to eq(0)
+	end
+
+	it "existe el método para acceder al lipido" do
+		expect(@alimento1.lipido).to eq(3.1)
+	end
+
+	it "existe el método para acceder al gei" do
+		expect(@alimento1.gei).to eq(50)
+	end
+
+	it "existe el método para acceder al terreno" do
+		expect(@alimento1.terreno).to eq(164)
 	end
 
 end 
