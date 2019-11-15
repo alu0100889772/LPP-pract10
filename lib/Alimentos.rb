@@ -1,6 +1,5 @@
-require "Alimentos/version"
+require 'Alimentos/Alimento'
 
 module Alimentos
-  class Error < StandardError; end
-  # Your code goes here...
+
 end
