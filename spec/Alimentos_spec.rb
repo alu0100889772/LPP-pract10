@@ -93,4 +93,10 @@ RSpec.describe Alimentos do
 		expect(@alimento1.terreno).to eq(164)
 	end
 
+	it "existe un método para obtener el alimento formateado" do
+		alimento_formateado = "#{@alimento1.nombre}:\n\tProteínas: #{@alimento1.}\n\tCarbohidratos: #{@alimento1.carb_hidr}\n\tLípidos: #{@alimento1.lipido}\n\tGEI: #{@alimento1.gei}\n\tTerreno: #{@alimento1.terreno}\n"
+
+		expect(@alimento1.to_s).to eq(alimento_formateado)
+	end
+
 end 
