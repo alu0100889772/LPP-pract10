@@ -34,16 +34,14 @@ class Persona
 					end
 				end
 			end
-		end
-		puts @impacto_ambiental_kcal
-		puts @impacto_ambiental_proteina	
+		end	
 	end
 
 	def buen_impacto?
 		resultado = false
-		if(sexo==0 && @impacto_ambiental_kcal <= 3000 && @impacto_ambiental_proteina <= 54)
+		if(sexo==0 && @impacto_ambiental_kcal <= 3000 && @impacto_ambiental_proteina >= 54)
 			resultado = true
-		elsif(sexo==0 && @impacto_ambiental_kcal <= 2300 && @impacto_ambiental_proteina <= 41)
+		elsif(sexo==1 && @impacto_ambiental_kcal <= 2300 && @impacto_ambiental_proteina >= 41)
 			resultado = true
 		end
 		

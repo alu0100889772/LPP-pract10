@@ -111,12 +111,19 @@ RSpec.describe Alimentos do
 	end
 
 	it "calcula correctamente el impacto ambiental de un hombre" do
-		@hombre1 = Persona.new(0,[@alimento12, @alimento4],[@alimento12, @alimento5],[@alimento8, @alimento12])
-		@hombre2 = Persona.new(0,[@alimento1, @alimento3, @alimento4],[@alimento2, @alimento4, @alimento5],[@alimento8, @alimento10])
+		@hombre1 = Persona.new(0,[@alimento12, @alimento3],[@alimento12, @alimento5],[@alimento8, @alimento12])
+		@hombre2 = Persona.new(0,[@alimento1, @alimento3, @alimento4],[@alimento2, @alimento4, @alimento5],[@alimento8, @alimento10, @alimento4, @alimento4])
 
 		expect(@hombre1.buen_impacto?).to be true
 		expect(@hombre2.buen_impacto?).to be false
 	end
 
+	it "calcula correctamente el impacto ambiental de una mujer" do
+		@mujer1 = Persona.new(1,[@alimento12],[@alimento12, @alimento4],[@alimento8, @alimento3])
+		@mujer2 = Persona.new(1,[@alimento12, @alimento4],[@alimento4, @alimento5],[@alimento4, @alimento4, @alimento4])
+
+		expect(@mujer1.buen_impacto?).to be true
+		expect(@mujer2.buen_impacto?).to be false
+	end	
 
 end
