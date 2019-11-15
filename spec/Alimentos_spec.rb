@@ -99,4 +99,8 @@ RSpec.describe Alimentos do
 		expect(@alimento1.to_s).to eq(alimento_formateado)
 	end
 
+	it "calcula el valir energético del alimento" do
+		expect(@alimento1.valor_energetico).to eq(112.3)
+	end
+
 end 
