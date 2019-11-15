@@ -20,4 +20,8 @@ class Alimento
 
 		result
 	end
+
+	def valor_energetico
+		(proteina*4+carb_hidr*4+lipido*9).round(2)
+	end
 end
