@@ -52,4 +52,8 @@ RSpec.describe Alimentos do
 	it "existe la proteina" do
 		expect(@alimento1.respond_to?(:proteina)).to be true
 	end 
+
+	it "existe el carbo hidrato" do
+		expect(@alimento1.respond_to?(:carb_hidr)).to be true
+	end 
 end 
