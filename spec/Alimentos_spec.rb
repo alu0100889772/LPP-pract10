@@ -35,6 +35,9 @@ RSpec.describe Alimentos do
 		@alimento13 = Alimento.new(tofu[:nombre],tofu[:proteina],tofu[:carb_hidr],tofu[:lipido],tofu[:gei],tofu[:terreno])
 		@alimento14 = Alimento.new(lentejas[:nombre],lentejas[:proteina],lentejas[:carb_hidr],lentejas[:lipido],lentejas[:gei],lentejas[:terreno])
 		@alimento15 = Alimento.new(nuez[:nombre],nuez[:proteina],nuez[:carb_hidr],nuez[:lipido],nuez[:gei],nuez[:terreno])
+	
+		
+
 	end
 
 	it "has a version number" do
@@ -107,4 +110,13 @@ RSpec.describe Alimentos do
 		expect(@alimento5.valor_energetico).to eq(202)
 	end
 
-end 
+	it "calcula correctamente el impacto ambiental de un hombre" do
+		@hombre1 = Persona.new(0,[@alimento12, @alimento4],[@alimento12, @alimento5],[@alimento8, @alimento12])
+		@hombre2 = Persona.new(0,[@alimento1, @alimento3, @alimento4],[@alimento2, @alimento4, @alimento5],[@alimento8, @alimento10])
+
+		expect(@hombre1.buen_impacto?).to be true
+		expect(@hombre2.buen_impacto?).to be false
+	end
+
+
+end

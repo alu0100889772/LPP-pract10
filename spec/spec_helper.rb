@@ -1,5 +1,6 @@
 require "bundler/setup"
 require "Alimentos/Alimento"
+require "Alimentos/Persona"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
