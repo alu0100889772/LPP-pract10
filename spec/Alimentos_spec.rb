@@ -69,5 +69,8 @@ RSpec.describe Alimentos do
 		expect(@alimento1.respond_to?(:terreno)).to be true
 	end 
 
+	it "existe el método para acceder al nombre" do
+		expect(@alimento1.nombre).to eq("Carne de vaca")
+	end
 
 end 
