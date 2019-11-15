@@ -56,4 +56,18 @@ RSpec.describe Alimentos do
 	it "existe el carbo hidrato" do
 		expect(@alimento1.respond_to?(:carb_hidr)).to be true
 	end 
+
+	it "existe el lipido" do
+		expect(@alimento1.respond_to?(:lipido)).to be true
+	end 
+
+	it "existe el gei" do
+		expect(@alimento1.respond_to?(:gei)).to be true
+	end 
+
+	it "existe el terreno" do
+		expect(@alimento1.respond_to?(:terreno)).to be true
+	end 
+
+
 end 
