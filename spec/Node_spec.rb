@@ -10,4 +10,8 @@ RSpec.describe Alimentos do
 		expect(false).to eq(false)
 	end
 
+	it "crea una lista" do
+		test1 = Node.new(nil,nil,nil)
+	end
+
 end
