@@ -44,4 +44,20 @@ Node = Struct.new(:value, :next, :prev) do
 			self.prev.get_tail
 		end
 	end
+
+	def empty
+	        if(self.value==nil)
+			true
+	        elsif(self.value!=nil)
+			false
+	        end
+	end
+
+	def push_head(value)
+		if(empty)
+			self.value = value;
+		else
+			get_head.prev = Node.new(value,get_head,nil)
+		end
+	end
 end
