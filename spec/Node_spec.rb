@@ -38,4 +38,11 @@ RSpec.describe Alimentos do
 		@lista1.push_tail(1)
 		expect(@lista1.get_tail.value).to eq(1)
 	end
+
+	it "se puede extraer por la cabeza" do
+		@lista0.pop_head
+		expect(@lista0.get_head.value).to eq(nil)
+		@lista1.pop_head
+		expect(@lista1.get_head.value).to eq(nil)
+	end
 end
