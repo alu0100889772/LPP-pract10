@@ -40,8 +40,8 @@ Node = Struct.new(:value, :next, :prev) do
 	def get_tail
 		if(self.next==nil)
 			self
-		elsif(self.prev!=nil)
-			self.prev.get_tail
+		elsif(self.next!=nil)
+			self.next.get_tail
 		end
 	end
 
@@ -58,6 +58,14 @@ Node = Struct.new(:value, :next, :prev) do
 			self.value = value;
 		else
 			get_head.prev = Node.new(value,get_head,nil)
+		end
+	end
+
+	def push_tail(value)
+		if(empty)
+			self.value = value;
+		else
+			get_tail.next = Node.new(value,nil,get_tail)
 		end
 	end
 end

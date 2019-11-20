@@ -20,15 +20,22 @@ RSpec.describe Alimentos do
 		expect(@lista1.get_head.value).to eq(5)
 	end
 
-	it "la lista tiene head" do
+	it "la lista tiene tail" do
 		expect(@lista0.get_tail.value).to eq(nil)
 		expect(@lista1.get_tail.value).to eq(5)
 	end
 
 	it "se puede insertar por la cabeza" do
+		@lista0.push_head(1)
+		expect(@lista0.get_head.value).to eq(1)
 		@lista1.push_head(1)
 		expect(@lista1.get_head.value).to eq(1)
-		@lista1.push_head(1)
-		expect(@lista1.get_head.value).to eq(1)
+	end
+
+	it "se puede insertar por la cola" do
+		@lista0.push_tail(1)
+		expect(@lista0.get_tail.value).to eq(1)
+		@lista1.push_tail(1)
+		expect(@lista1.get_tail.value).to eq(1)
 	end
 end
