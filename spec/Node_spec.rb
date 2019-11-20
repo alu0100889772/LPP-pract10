@@ -17,4 +17,8 @@ RSpec.describe Alimentos do
 	it "la lista tiene head" do
 		expect(@lista1.get_head.value).to eq(5)
 	end
+
+	it "la lista tiene head" do
+		expect(@lista1.get_tail.value).to eq(5)
+	end
 end
