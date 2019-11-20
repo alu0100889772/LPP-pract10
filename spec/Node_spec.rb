@@ -12,6 +12,10 @@ RSpec.describe Alimentos do
 
 	it "crea una lista" do
 		test1 = Node.new(nil,nil,nil)
+		expect(test1.class).to eq(Node)
 	end
 
+	it "la lista tiene head" do
+		
+	end
 end
