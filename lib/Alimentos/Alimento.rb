@@ -26,3 +26,22 @@ class Alimento
 		(proteina*4+carb_hidr*4+lipido*9).round(2)
 	end
 end
+
+Node = Struct.new(:value, :next, :prev) do
+
+	def get_head
+		if(self.prev==nil)
+			self
+		elsif(self.prev!=nil)
+			self.prev.get_head
+		end
+	end
+
+	def get_tail
+		if(self.next==nil)
+			self
+		elsif(self.prev!=nil)
+			self.prev.get_tail
+		end
+	end
+end
