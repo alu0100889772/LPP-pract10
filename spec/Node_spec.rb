@@ -45,5 +45,23 @@ RSpec.describe Alimentos do
 
 		@lista1.pop_head
 		expect(@lista1.get_head.value).to eq(nil)
+
+		@lista1.push_head(2)
+		@lista1.push_head(3)
+		@lista1.pop_head
+		expect(@lista1.get_head.value).to eq(2)
+	end
+
+	it "se puede extraer por la cola" do
+		@lista0.pop_tail
+		expect(@lista0.get_tail.value).to eq(nil)
+
+		@lista1.pop_tail
+		expect(@lista1.get_tail.value).to eq(nil)
+
+		@lista1.push_tail(2)
+		@lista1.push_tail(3)
+		@lista1.pop_tail
+		expect(@lista1.get_tail.value).to eq(2)
 	end
 end
