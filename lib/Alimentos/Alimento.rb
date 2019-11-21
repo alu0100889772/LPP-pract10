@@ -68,4 +68,14 @@ Node = Struct.new(:value, :next, :prev) do
 			get_tail.next = Node.new(value,nil,get_tail)
 		end
 	end
+
+	def pop_head
+		elim_nodo = self.get_head
+
+		if(self.get_head != self.get_tail)
+			get_head.next.prev = nil
+		else
+			self.value = nil
+		end
+	end
 end
