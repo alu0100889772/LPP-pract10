@@ -206,7 +206,11 @@ RSpec.describe Alimentos do
 		expect(@dietaEspanola.porcentajeCarboHidratos).to be_between(35, 45)
 	end
 
-	it "la dieta española tiene los porcentajes indicados de carbohidratos" do
+	it "la dieta española tiene los porcentajes indicados de grasas" do
 		expect(@dietaEspanola.porcentajeLipido).to be_between(35, 45)
+	end
+
+	it "la dieta española tiene los porcentajes indicados de proteinas" do
+		expect(@dietaEspanola.porcentajeProteina).to be_between(15, 25)
 	end
 end
