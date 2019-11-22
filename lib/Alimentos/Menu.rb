@@ -98,4 +98,18 @@ class Menu
 		end
 		return contieneCarne
 	end
+
+	def contieneProcedenciaAnimal?
+		iterador = @menu.head
+		contieneProcedenciaAnimal = false
+		for i in (0..menu_size) do
+			if(iterador!=nil)
+				if(iterador.value.is_origen_animal)
+					contieneProcedenciaAnimal = true
+				end
+				iterador = iterador.next
+			end
+		end
+		return contieneProcedenciaAnimal
+	end
 end
