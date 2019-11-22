@@ -42,7 +42,8 @@ RSpec.describe Alimentos do
 
 		@dietaTest = Menu.new()
 
-		@dietaEspanola = Menu.new([@carneVaca,@chocolate,@cafe])
+		@dietaEspanola = Menu.new()
+		@dietaEspanola.add([@carneCordero,@chocolate,@cafe])
 
 	end
 

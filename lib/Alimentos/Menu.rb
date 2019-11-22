@@ -44,4 +44,24 @@ class Menu
 		puts result
 		return result
 	end
+
+	def porcentajeLipido
+		result = 0
+		iterador = @menu.head
+		total = 0.0
+		lipidos = 0.0
+		
+		for i in (0..menu_size) do
+			if(iterador!=nil)
+				total += iterador.value.carb_hidr + iterador.value.lipido + iterador.value.proteina
+				lipidos += iterador.value.lipido
+
+				iterador = iterador.next
+			end
+		end
+
+		result = (lipidos/total)*100
+		puts result
+		return result
+	end
 end
