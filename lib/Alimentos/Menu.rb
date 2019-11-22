@@ -120,7 +120,7 @@ class Menu
 				iterador = iterador.next
 			end
 		end
-		return emisionesEfectoInvDiarias
+		return emisionesEfectoInvDiarias.round(2)
 	end
 
 end

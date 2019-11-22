@@ -260,4 +260,10 @@ RSpec.describe Alimentos do
 		expect(@dietaVegetaria.emisionesEfectoInvDiarias).to eq(8.3)
 	end
 
+	it "calcula las emisiones anuales de efecto invernadero de un menu" do
+		expect(@dietaEspanola.emisionesEfectoInvAnuales).to eq(8285.5)
+		expect(@dietaVasca.emisionesEfectoInvAnuales).to eq(2555.0)
+		expect(@dietaVegetaria.emisionesEfectoInvAnuales).to eq(3029.5)
+	end
+
 end
