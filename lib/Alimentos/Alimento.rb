@@ -2,10 +2,10 @@ require "Alimentos/version"
 
 
 class Alimento
-	attr_reader :nombre, :proteina, :carb_hidr, :lipido, :gei, :terreno
+	attr_reader :nombre, :proteina, :carb_hidr, :lipido, :gei, :terreno, :is_carne, :is_origen_animal
 
-	def initialize(nombre, proteina, carb_hidr, lipido, gei, terreno)
-		@nombre, @proteina, @carb_hidr, @lipido, @gei, @terreno = nombre, proteina, carb_hidr, lipido, gei, terreno
+	def initialize(nombre, proteina, carb_hidr, lipido, gei, terreno, is_carne, is_origen_animal)
+		@nombre, @proteina, @carb_hidr, @lipido, @gei, @terreno, @is_carne, @is_origen_animal = nombre, proteina, carb_hidr, lipido, gei, terreno, is_carne, is_origen_animal
 	end
 
 	def to_s
