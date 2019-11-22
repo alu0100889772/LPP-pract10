@@ -48,11 +48,11 @@ RSpec.describe Alimentos do
 		@dietaVasca = Menu.new()
 		@dietaVasca.add([@lentejas,@chocolate,@chocolate,@tofu])
 
-		@dietaVegetariana = Menu.new()
-		@dietaVegetariana.add([@chocolate,@tofu,@tofu,@tofu])
+		@dietaVegetaria = Menu.new()
+		@dietaVegetaria.add([@chocolate,@tofu,@tofu,@tofu])
 
 		@dietaVegetaliana = Menu.new()
-		@dietaVegetaliana.add([@chocolate,@tofu,@tofu,@tofu])
+		@dietaVegetaliana.add([@tofu,@chocolate])
 	end
 
 	it "has a version number" do
@@ -234,23 +234,30 @@ RSpec.describe Alimentos do
 		expect(@dietaVasca.porcentajeProteina).to be_between(10, 20)
 	end
 
-	it "la dieta vegetariana no contiene carne" do
-		expect(@dietaVegetariana.contieneCarne?).to be false
+	it "la dieta vegetaria no contiene carne" do
+		expect(@dietaVegetaria.contieneCarne?).to be false
 	end
 
-	it "la dieta vegetariana tiene los porcentajes indicados de carbohidratos" do
-		expect(@dietaVegetariana.porcentajeCarboHidratos).to be_between(35, 45)
+	it "la dieta vegetaria tiene los porcentajes indicados de carbohidratos" do
+		expect(@dietaVegetaria.porcentajeCarboHidratos).to be_between(35, 45)
 	end
 
-	it "la dieta vegetariana tiene los porcentajes indicados de grasas" do
-		expect(@dietaVegetariana.porcentajeLipido).to be_between(35, 45)
+	it "la dieta vegetaria tiene los porcentajes indicados de grasas" do
+		expect(@dietaVegetaria.porcentajeLipido).to be_between(35, 45)
 	end
 
-	it "la dieta vegetariana tiene los porcentajes indicados de proteinas" do
-		expect(@dietaVegetariana.porcentajeProteina).to be_between(15, 25)
+	it "la dieta vegetaria tiene los porcentajes indicados de proteinas" do
+		expect(@dietaVegetaria.porcentajeProteina).to be_between(15, 25)
 	end
 
 	it "la dieta vegetaliana no contiene alimentos procedentes de animales" do
 		expect(@dietaVegetaliana.contieneProcedenciaAnimal?).to be false
 	end
+
+	it "calcula las emisiones diarias de efecto invernadero de un menu" do
+		expect(@dietaEspanola.emisionesEfectoInvDiarias).to eq(22.7)
+		expect(@dietaVasca.emisionesEfectoInvDiarias).to eq(7)
+		expect(@dietaVegetaria.emisionesEfectoInvDiarias).to eq(8.3)
+	end
+
 end

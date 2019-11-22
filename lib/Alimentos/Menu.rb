@@ -41,7 +41,6 @@ class Menu
 		end
 
 		result = (carbohidratos/total)*100
-		puts result
 		return result
 	end
 
@@ -61,7 +60,6 @@ class Menu
 		end
 
 		result = (lipidos/total)*100
-		puts result
 		return result
 	end
 
@@ -81,7 +79,6 @@ class Menu
 		end
 
 		result = (proteinas/total)*100
-		puts result
 		return result
 	end
 
@@ -112,4 +109,5 @@ class Menu
 		end
 		return contieneProcedenciaAnimal
 	end
+
 end
