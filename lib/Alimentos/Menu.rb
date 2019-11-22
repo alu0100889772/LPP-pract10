@@ -123,4 +123,8 @@ class Menu
 		return emisionesEfectoInvDiarias.round(2)
 	end
 
+	def emisionesEfectoInvAnuales
+		return (emisionesEfectoInvDiarias*365).round(2)
+	end
+
 end
