@@ -51,7 +51,8 @@ RSpec.describe Alimentos do
 		@dietaVegetariana = Menu.new()
 		@dietaVegetariana.add([@chocolate,@tofu,@tofu,@tofu])
 
-
+		@dietaVegetaliana = Menu.new()
+		@dietaVegetaliana.add([@chocolate,@tofu,@tofu,@tofu])
 	end
 
 	it "has a version number" do
@@ -247,5 +248,9 @@ RSpec.describe Alimentos do
 
 	it "la dieta vegetariana tiene los porcentajes indicados de proteinas" do
 		expect(@dietaVegetariana.porcentajeProteina).to be_between(15, 25)
+	end
+
+	it "la dieta vegetaliana no contiene alimentos procedentes de animales" do
+		expect(@dietaVegetaliana.contieneProcedenciaAnimal?).to be false
 	end
 end
