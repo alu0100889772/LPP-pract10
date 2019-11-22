@@ -47,6 +47,7 @@ RSpec.describe Alimentos do
 
 		@dietaVasca = Menu.new()
 		@dietaVasca.add([@lentejas,@chocolate,@chocolate,@tofu])
+		@dietaVegetariana.add([@lentejas,@chocolate,@chocolate,@tofu])
 
 
 	end
@@ -228,5 +229,9 @@ RSpec.describe Alimentos do
 
 	it "la dieta vasca tiene los porcentajes indicados de proteinas" do
 		expect(@dietaVasca.porcentajeProteina).to be_between(10, 20)
+	end
+
+	it "la dieta vegetariana no contiene carne" do
+		expect(@dietaVegetariana.contieneCarne?).to be false
 	end
 end
