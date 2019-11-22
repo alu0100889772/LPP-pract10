@@ -127,4 +127,17 @@ class Menu
 		return (emisionesEfectoInvDiarias*365).round(2)
 	end
 
+	
+	def terrenoTotal
+		iterador = @menu.head
+		terrenoTotal = 0
+		for i in (0..menu_size) do
+			if(iterador!=nil)
+				terrenoTotal += iterador.value.terreno
+				iterador = iterador.next
+			end
+		end
+		return terrenoTotal.round(2)
+	end
+
 end
