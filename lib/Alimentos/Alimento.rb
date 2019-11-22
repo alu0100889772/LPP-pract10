@@ -89,3 +89,7 @@ Node = Struct.new(:value, :next, :prev) do
 		end
 	end
 end
+
+class Menu
+
+end
