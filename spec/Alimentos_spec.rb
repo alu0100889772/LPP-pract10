@@ -49,7 +49,7 @@ RSpec.describe Alimentos do
 		@dietaVasca.add([@lentejas,@chocolate,@chocolate,@tofu])
 
 		@dietaVegetariana = Menu.new()
-		@dietaVegetariana.add([@lentejas,@chocolate,@chocolate,@tofu])
+		@dietaVegetariana.add([@chocolate,@tofu,@tofu,@tofu])
 
 
 	end
@@ -235,5 +235,17 @@ RSpec.describe Alimentos do
 
 	it "la dieta vegetariana no contiene carne" do
 		expect(@dietaVegetariana.contieneCarne?).to be false
+	end
+
+	it "la dieta vegetariana tiene los porcentajes indicados de carbohidratos" do
+		expect(@dietaVegetariana.porcentajeCarboHidratos).to be_between(35, 45)
+	end
+
+	it "la dieta vegetariana tiene los porcentajes indicados de grasas" do
+		expect(@dietaVegetariana.porcentajeLipido).to be_between(35, 45)
+	end
+
+	it "la dieta vegetariana tiene los porcentajes indicados de proteinas" do
+		expect(@dietaVegetariana.porcentajeProteina).to be_between(15, 25)
 	end
 end
