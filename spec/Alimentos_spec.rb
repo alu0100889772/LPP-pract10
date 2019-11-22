@@ -203,7 +203,7 @@ RSpec.describe Alimentos do
 
 	it "la dieta española tiene los porcentajes indicados de carbohidratos" do
 		@dietaEspanola.erase
-		@dietaEspanola.add([@carneVaca,@camarones,@cafe])
+		@dietaEspanola.add([@carneVaca,@chocolate,@cafe])
 		expect(@dietaEspanola.porcentajeCarboHidratos).to be_between(35, 45)
 
 	end
