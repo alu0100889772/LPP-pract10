@@ -42,7 +42,7 @@ RSpec.describe Alimentos do
 
 		@dietaTest = Menu.new()
 
-		@dietaEspanola = Menu.new()
+		@dietaEspanola = Menu.new([@carneVaca,@chocolate,@cafe])
 
 	end
 
@@ -202,9 +202,10 @@ RSpec.describe Alimentos do
 	end
 
 	it "la dieta española tiene los porcentajes indicados de carbohidratos" do
-		@dietaEspanola.erase
-		@dietaEspanola.add([@carneVaca,@chocolate,@cafe])
 		expect(@dietaEspanola.porcentajeCarboHidratos).to be_between(35, 45)
+	end
 
+	it "la dieta española tiene los porcentajes indicados de carbohidratos" do
+		expect(@dietaEspanola.porcentajeLipido).to be_between(35, 45)
 	end
 end
