@@ -84,4 +84,18 @@ class Menu
 		puts result
 		return result
 	end
+
+	def contieneCarne?
+		iterador = @menu.head
+		contieneCarne = false
+		for i in (0..menu_size) do
+			if(iterador!=nil)
+				if(iterador.value.is_carne)
+					contieneCarne = true
+				end
+				iterador = iterador.next
+			end
+		end
+		return contieneCarne
+	end
 end

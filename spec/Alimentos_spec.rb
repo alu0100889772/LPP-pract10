@@ -47,6 +47,8 @@ RSpec.describe Alimentos do
 
 		@dietaVasca = Menu.new()
 		@dietaVasca.add([@lentejas,@chocolate,@chocolate,@tofu])
+
+		@dietaVegetariana = Menu.new()
 		@dietaVegetariana.add([@lentejas,@chocolate,@chocolate,@tofu])
 
 
