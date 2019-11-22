@@ -266,4 +266,10 @@ RSpec.describe Alimentos do
 		expect(@dietaVegetaria.emisionesEfectoInvAnuales).to eq(3029.5)
 	end
 
+	it "calcula los metros cuadrados de uso de un menu" do
+		expect(@dietaEspanola.terrenoTotal).to eq(188.7)
+		expect(@dietaVasca.terrenoTotal).to eq(12.4)
+		expect(@dietaVegetaria.terrenoTotal).to eq(10)
+	end
+
 end
