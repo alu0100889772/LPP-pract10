@@ -110,4 +110,17 @@ class Menu
 		return contieneProcedenciaAnimal
 	end
 
+	
+	def emisionesEfectoInvDiarias
+		iterador = @menu.head
+		emisionesEfectoInvDiarias = 0
+		for i in (0..menu_size) do
+			if(iterador!=nil)
+				emisionesEfectoInvDiarias += iterador.value.gei
+				iterador = iterador.next
+			end
+		end
+		return emisionesEfectoInvDiarias
+	end
+
 end
