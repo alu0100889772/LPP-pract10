@@ -4,7 +4,7 @@ class Menu
 	attr_accessor :menu
 
 	def initialize()
-		@menu = Lista.new()
+		@menu = Lista.new
 	end
 	
 	def add(arrayAlimentos)
@@ -19,5 +19,9 @@ class Menu
 
 	def menu_size
 		return @menu.size
+	end
+
+	def erase
+		@menu = Lista.new
 	end
 end
