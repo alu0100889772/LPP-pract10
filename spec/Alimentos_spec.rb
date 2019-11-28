@@ -39,7 +39,15 @@ RSpec.describe Alimentos do
 	
 		@lista0 = Lista.new()
 		@lista1 = Lista.new()
+		@lista2 = Lista.new()
+
 		@lista1.push_head(5)
+
+		@lista2.push_head(4)
+		@lista2.push_head(10)
+		@lista2.push_head(6)
+		@lista2.push_head(1)
+		@lista2.push_head(20)
 
 		@dietaTest = Menu.new()
 
@@ -263,6 +271,36 @@ RSpec.describe Alimentos do
 			@lista1.pop_tail
 			expect(@lista1.get_tail).to eq(2)
 		end
+
+		it "Comprobando el metodo del collect" do
+
+			expect(@lista2.collect{|i| i}).to eq([4,10,6,1,20])
+
+     		end
+
+     		it "Comprobando el metodo select" do
+
+			expect(@lista2.select{|i| i < 10}).to eq([4,6,1])
+
+     		end
+
+     		it "comprobando el metodo max " do
+
+			expect(@lista2.max).to eq(20)
+
+     		end
+
+     		it "Comprobando el metodo min" do
+
+			expect(@lista2.min).to eq(1)
+
+     		end
+
+     		it "Comprobando el metodo sort" do
+
+			expect(@lista2.sort{ |a,b| b<=>a}).to eq([1,4,6,10,20])
+
+     		end
 
 	end
 
