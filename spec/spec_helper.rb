@@ -1,8 +1,4 @@
 require "bundler/setup"
-require "Alimentos/Alimento"
-require "Alimentos/Persona"
-require "Alimentos/Lista"
-require "Alimentos/Menu"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

@@ -63,213 +63,223 @@ RSpec.describe Alimentos do
 		expect(false).to eq(false)
 	end
 
-	it "existe el nombre" do
-		expect(@carneVaca.respond_to?(:nombre)).to be true
+	describe Alimento do
+
+		it "existe el nombre" do
+			expect(@carneVaca.respond_to?(:nombre)).to be true
+		end
+
+		it "existe la proteina" do
+			expect(@carneVaca.respond_to?(:proteina)).to be true
+		end 
+
+		it "existe el carbo hidrato" do
+			expect(@carneVaca.respond_to?(:carb_hidr)).to be true
+		end 
+
+		it "existe el lipido" do
+			expect(@carneVaca.respond_to?(:lipido)).to be true
+		end 
+
+		it "existe el gei" do
+			expect(@carneVaca.respond_to?(:gei)).to be true
+		end 
+
+		it "existe el terreno" do
+			expect(@carneVaca.respond_to?(:terreno)).to be true
+		end 
+
+		it "existe el método para acceder al nombre" do
+			expect(@carneVaca.nombre).to eq("Carne de vaca")
+		end
+
+		it "existe el método para acceder a la proteina" do
+			expect(@carneVaca.proteina).to eq(21.1)
+		end
+
+		it "existe el método para acceder al carbo hidrato" do
+			expect(@carneVaca.carb_hidr).to eq(0)
+		end
+
+		it "existe el método para acceder al lipido" do
+			expect(@carneVaca.lipido).to eq(3.1)
+		end
+
+		it "existe el método para acceder al gei" do
+			expect(@carneVaca.gei).to eq(50)
+		end
+
+		it "existe el método para acceder al terreno" do
+			expect(@carneVaca.terreno).to eq(164)
+		end
+
+		it "existe un método para obtener el alimento formateado" do
+			alimento_formateado = "#{@carneVaca.nombre}:\n\tProteínas: #{@carneVaca.proteina}\n\tCarbohidratos: #{@carneVaca.carb_hidr}\n\tLípidos: #{@carneVaca.lipido}\n\tGEI: #{@carneVaca.gei}\n\tTerreno: #{@carneVaca.terreno}\n"
+
+			expect(@carneVaca.to_s).to eq(alimento_formateado)
+		end
+
+		it "calcula el valor energético del alimento" do
+			expect(@carneVaca.valor_energetico).to eq(112.3)
+			expect(@carneCordero.valor_energetico).to eq(225)
+			expect(@camarones.valor_energetico).to eq(81.8)
+			expect(@chocolate.valor_energetico).to eq(479.2)
+			expect(@salmon.valor_energetico).to eq(202)
+		end
+
 	end
 
-	it "existe la proteina" do
-		expect(@carneVaca.respond_to?(:proteina)).to be true
-	end 
+	describe Persona do
 
-	it "existe el carbo hidrato" do
-		expect(@carneVaca.respond_to?(:carb_hidr)).to be true
-	end 
+		it "calcula correctamente el impacto ambiental de un hombre" do
+			@hombre1 = Persona.new(0,[@cafe, @camarones],[@cafe, @salmon],[@queso, @cafe])
+			@hombre2 = Persona.new(0,[@carneVaca, @camarones, @chocolate],[@carneCordero, @chocolate, @salmon],[@queso, @lecheVaca, @chocolate, @chocolate])
 
-	it "existe el lipido" do
-		expect(@carneVaca.respond_to?(:lipido)).to be true
-	end 
+			expect(@hombre1.buen_impacto?).to be true
+			expect(@hombre2.buen_impacto?).to be false
+		end
 
-	it "existe el gei" do
-		expect(@carneVaca.respond_to?(:gei)).to be true
-	end 
+		it "calcula correctamente el impacto ambiental de una mujer" do
+			@mujer1 = Persona.new(1,[@cafe],[@cafe, @chocolate],[@queso, @camarones])
+			@mujer2 = Persona.new(1,[@cafe, @chocolate],[@chocolate, @salmon],[@chocolate, @chocolate, @chocolate])
 
-	it "existe el terreno" do
-		expect(@carneVaca.respond_to?(:terreno)).to be true
-	end 
+			expect(@mujer1.buen_impacto?).to be true
+			expect(@mujer2.buen_impacto?).to be false
+		end
 
-	it "existe el método para acceder al nombre" do
-		expect(@carneVaca.nombre).to eq("Carne de vaca")
-	end
-
-	it "existe el método para acceder a la proteina" do
-		expect(@carneVaca.proteina).to eq(21.1)
-	end
-
-	it "existe el método para acceder al carbo hidrato" do
-		expect(@carneVaca.carb_hidr).to eq(0)
-	end
-
-	it "existe el método para acceder al lipido" do
-		expect(@carneVaca.lipido).to eq(3.1)
-	end
-
-	it "existe el método para acceder al gei" do
-		expect(@carneVaca.gei).to eq(50)
-	end
-
-	it "existe el método para acceder al terreno" do
-		expect(@carneVaca.terreno).to eq(164)
-	end
-
-	it "existe un método para obtener el alimento formateado" do
-		alimento_formateado = "#{@carneVaca.nombre}:\n\tProteínas: #{@carneVaca.proteina}\n\tCarbohidratos: #{@carneVaca.carb_hidr}\n\tLípidos: #{@carneVaca.lipido}\n\tGEI: #{@carneVaca.gei}\n\tTerreno: #{@carneVaca.terreno}\n"
-
-		expect(@carneVaca.to_s).to eq(alimento_formateado)
-	end
-
-	it "calcula el valor energético del alimento" do
-		expect(@carneVaca.valor_energetico).to eq(112.3)
-		expect(@carneCordero.valor_energetico).to eq(225)
-		expect(@camarones.valor_energetico).to eq(81.8)
-		expect(@chocolate.valor_energetico).to eq(479.2)
-		expect(@salmon.valor_energetico).to eq(202)
-	end
-
-	it "calcula correctamente el impacto ambiental de un hombre" do
-		@hombre1 = Persona.new(0,[@cafe, @camarones],[@cafe, @salmon],[@queso, @cafe])
-		@hombre2 = Persona.new(0,[@carneVaca, @camarones, @chocolate],[@carneCordero, @chocolate, @salmon],[@queso, @lecheVaca, @chocolate, @chocolate])
-
-		expect(@hombre1.buen_impacto?).to be true
-		expect(@hombre2.buen_impacto?).to be false
-	end
-
-	it "calcula correctamente el impacto ambiental de una mujer" do
-		@mujer1 = Persona.new(1,[@cafe],[@cafe, @chocolate],[@queso, @camarones])
-		@mujer2 = Persona.new(1,[@cafe, @chocolate],[@chocolate, @salmon],[@chocolate, @chocolate, @chocolate])
-
-		expect(@mujer1.buen_impacto?).to be true
-		expect(@mujer2.buen_impacto?).to be false
 	end	
 
-	it "does something useful" do
-		expect(false).to eq(false)
+	describe Lista do
+
+		it "crea una lista" do
+			expect(@lista1.class).to eq(Lista)
+		end
+
+		it "la lista tiene head" do
+			expect(@lista0.get_head).to eq(nil)
+			expect(@lista1.get_head).to eq(5)
+		end
+
+		it "la lista tiene tail" do
+			expect(@lista0.get_tail).to eq(nil)
+			expect(@lista1.get_tail).to eq(5)
+		end
+
+		it "se puede insertar por la cabeza" do
+			@lista0.push_head(1)
+			expect(@lista0.get_head).to eq(1)
+			@lista1.push_head(1)
+			expect(@lista1.get_head).to eq(1)
+		end
+
+		it "se puede insertar por la cola" do
+			@lista0.push_tail(1)
+			expect(@lista0.get_tail).to eq(1)
+			@lista1.push_tail(1)
+			expect(@lista1.get_tail).to eq(1)
+		end
+
+		it "se puede extraer por la cabeza" do
+			@lista0.pop_head
+			expect(@lista0.get_head).to eq(nil)
+
+			@lista1.pop_head
+			expect(@lista1.get_head).to eq(nil)
+
+			@lista1.push_head(2)
+			@lista1.push_head(3)
+			@lista1.pop_head
+			expect(@lista1.get_head).to eq(2)
+		end
+
+		it "se puede extraer por la cola" do
+			@lista0.pop_tail
+			expect(@lista0.get_tail).to eq(nil)
+
+			@lista1.pop_tail
+			expect(@lista1.get_tail).to eq(nil)
+
+			@lista1.push_tail(2)
+			@lista1.push_tail(3)
+			@lista1.pop_tail
+			expect(@lista1.get_tail).to eq(2)
+		end
+
 	end
 
-	it "crea una lista" do
-		expect(@lista1.class).to eq(Lista)
+	describe Menu do
+
+		it "crea Menu" do
+			@dietaEspanola = Menu.new()
+			expect(@dietaEspanola.class).to eq(Menu)
+		end
+
+		it "añade alimentos al menu" do
+			@dietaTest.add([@carneVaca,@camarones,@cafe])
+			expect(@dietaTest.menu_size).to eq(3)
+		end
+
+		it "la dieta española tiene los porcentajes indicados de carbohidratos" do
+			expect(@dietaEspanola.porcentajeCarboHidratos).to be_between(35, 45)
+		end
+
+		it "la dieta española tiene los porcentajes indicados de grasas" do
+			expect(@dietaEspanola.porcentajeLipido).to be_between(35, 45)
+		end
+
+		it "la dieta española tiene los porcentajes indicados de proteinas" do
+			expect(@dietaEspanola.porcentajeProteina).to be_between(15, 25)
+		end
+
+		it "la dieta vasca tiene los porcentajes indicados de carbohidratos" do
+			expect(@dietaVasca.porcentajeCarboHidratos).to be_between(55, 65)
+		end
+
+		it "la dieta vasca tiene los porcentajes indicados de grasas" do
+			expect(@dietaVasca.porcentajeLipido).to be_between(20, 30)
+		end
+
+		it "la dieta vasca tiene los porcentajes indicados de proteinas" do
+			expect(@dietaVasca.porcentajeProteina).to be_between(10, 20)
+		end
+
+		it "la dieta vegetaria no contiene carne" do
+			expect(@dietaVegetaria.contieneCarne?).to be false
+		end
+
+		it "la dieta vegetaria tiene los porcentajes indicados de carbohidratos" do
+			expect(@dietaVegetaria.porcentajeCarboHidratos).to be_between(35, 45)
+		end
+
+		it "la dieta vegetaria tiene los porcentajes indicados de grasas" do
+			expect(@dietaVegetaria.porcentajeLipido).to be_between(35, 45)
+		end
+
+		it "la dieta vegetaria tiene los porcentajes indicados de proteinas" do
+			expect(@dietaVegetaria.porcentajeProteina).to be_between(15, 25)
+		end
+
+		it "la dieta vegetaliana no contiene alimentos procedentes de animales" do
+			expect(@dietaVegetaliana.contieneProcedenciaAnimal?).to be false
+		end
+
+		it "calcula las emisiones diarias de efecto invernadero de un menu" do
+			expect(@dietaEspanola.emisionesEfectoInvDiarias).to eq(22.7)
+			expect(@dietaVasca.emisionesEfectoInvDiarias).to eq(7)
+			expect(@dietaVegetaria.emisionesEfectoInvDiarias).to eq(8.3)
+		end
+
+		it "calcula las emisiones anuales de efecto invernadero de un menu" do
+			expect(@dietaEspanola.emisionesEfectoInvAnuales).to eq(8285.5)
+			expect(@dietaVasca.emisionesEfectoInvAnuales).to eq(2555.0)
+			expect(@dietaVegetaria.emisionesEfectoInvAnuales).to eq(3029.5)
+		end
+
+		it "calcula los metros cuadrados de uso de un menu" do
+			expect(@dietaEspanola.terrenoTotal).to eq(188.7)
+			expect(@dietaVasca.terrenoTotal).to eq(12.4)
+			expect(@dietaVegetaria.terrenoTotal).to eq(10)
+		end
+
 	end
-
-	it "la lista tiene head" do
-		expect(@lista0.get_head).to eq(nil)
-		expect(@lista1.get_head).to eq(5)
-	end
-
-	it "la lista tiene tail" do
-		expect(@lista0.get_tail).to eq(nil)
-		expect(@lista1.get_tail).to eq(5)
-	end
-
-	it "se puede insertar por la cabeza" do
-		@lista0.push_head(1)
-		expect(@lista0.get_head).to eq(1)
-		@lista1.push_head(1)
-		expect(@lista1.get_head).to eq(1)
-	end
-
-	it "se puede insertar por la cola" do
-		@lista0.push_tail(1)
-		expect(@lista0.get_tail).to eq(1)
-		@lista1.push_tail(1)
-		expect(@lista1.get_tail).to eq(1)
-	end
-
-	it "se puede extraer por la cabeza" do
-		@lista0.pop_head
-		expect(@lista0.get_head).to eq(nil)
-
-		@lista1.pop_head
-		expect(@lista1.get_head).to eq(nil)
-
-		@lista1.push_head(2)
-		@lista1.push_head(3)
-		@lista1.pop_head
-		expect(@lista1.get_head).to eq(2)
-	end
-
-	it "se puede extraer por la cola" do
-		@lista0.pop_tail
-		expect(@lista0.get_tail).to eq(nil)
-
-		@lista1.pop_tail
-		expect(@lista1.get_tail).to eq(nil)
-
-		@lista1.push_tail(2)
-		@lista1.push_tail(3)
-		@lista1.pop_tail
-		expect(@lista1.get_tail).to eq(2)
-	end
-
-
-	it "crea Menu" do
-		@dietaEspanola = Menu.new()
-		expect(@dietaEspanola.class).to eq(Menu)
-	end
-
-	it "añade alimentos al menu" do
-		@dietaTest.add([@carneVaca,@camarones,@cafe])
-		expect(@dietaTest.menu_size).to eq(3)
-	end
-
-	it "la dieta española tiene los porcentajes indicados de carbohidratos" do
-		expect(@dietaEspanola.porcentajeCarboHidratos).to be_between(35, 45)
-	end
-
-	it "la dieta española tiene los porcentajes indicados de grasas" do
-		expect(@dietaEspanola.porcentajeLipido).to be_between(35, 45)
-	end
-
-	it "la dieta española tiene los porcentajes indicados de proteinas" do
-		expect(@dietaEspanola.porcentajeProteina).to be_between(15, 25)
-	end
-
-	it "la dieta vasca tiene los porcentajes indicados de carbohidratos" do
-		expect(@dietaVasca.porcentajeCarboHidratos).to be_between(55, 65)
-	end
-
-	it "la dieta vasca tiene los porcentajes indicados de grasas" do
-		expect(@dietaVasca.porcentajeLipido).to be_between(20, 30)
-	end
-
-	it "la dieta vasca tiene los porcentajes indicados de proteinas" do
-		expect(@dietaVasca.porcentajeProteina).to be_between(10, 20)
-	end
-
-	it "la dieta vegetaria no contiene carne" do
-		expect(@dietaVegetaria.contieneCarne?).to be false
-	end
-
-	it "la dieta vegetaria tiene los porcentajes indicados de carbohidratos" do
-		expect(@dietaVegetaria.porcentajeCarboHidratos).to be_between(35, 45)
-	end
-
-	it "la dieta vegetaria tiene los porcentajes indicados de grasas" do
-		expect(@dietaVegetaria.porcentajeLipido).to be_between(35, 45)
-	end
-
-	it "la dieta vegetaria tiene los porcentajes indicados de proteinas" do
-		expect(@dietaVegetaria.porcentajeProteina).to be_between(15, 25)
-	end
-
-	it "la dieta vegetaliana no contiene alimentos procedentes de animales" do
-		expect(@dietaVegetaliana.contieneProcedenciaAnimal?).to be false
-	end
-
-	it "calcula las emisiones diarias de efecto invernadero de un menu" do
-		expect(@dietaEspanola.emisionesEfectoInvDiarias).to eq(22.7)
-		expect(@dietaVasca.emisionesEfectoInvDiarias).to eq(7)
-		expect(@dietaVegetaria.emisionesEfectoInvDiarias).to eq(8.3)
-	end
-
-	it "calcula las emisiones anuales de efecto invernadero de un menu" do
-		expect(@dietaEspanola.emisionesEfectoInvAnuales).to eq(8285.5)
-		expect(@dietaVasca.emisionesEfectoInvAnuales).to eq(2555.0)
-		expect(@dietaVegetaria.emisionesEfectoInvAnuales).to eq(3029.5)
-	end
-
-	it "calcula los metros cuadrados de uso de un menu" do
-		expect(@dietaEspanola.terrenoTotal).to eq(188.7)
-		expect(@dietaVasca.terrenoTotal).to eq(12.4)
-		expect(@dietaVegetaria.terrenoTotal).to eq(10)
-	end
-
 end
