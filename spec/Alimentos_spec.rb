@@ -49,18 +49,18 @@ RSpec.describe Alimentos do
 		@lista2.push_head(1)
 		@lista2.push_head(20)
 
-		@dietaTest = Menu.new()
+		@dietaTest = Plato.new()
 
-		@dietaEspanola = Menu.new()
+		@dietaEspanola = Plato.new()
 		@dietaEspanola.add([@carneCordero,@chocolate,@cafe])
 
-		@dietaVasca = Menu.new()
+		@dietaVasca = Plato.new()
 		@dietaVasca.add([@lentejas,@chocolate,@chocolate,@tofu])
 
-		@dietaVegetaria = Menu.new()
+		@dietaVegetaria = Plato.new()
 		@dietaVegetaria.add([@chocolate,@tofu,@tofu,@tofu])
 
-		@dietaVegetaliana = Menu.new()
+		@dietaVegetaliana = Plato.new()
 		@dietaVegetaliana.add([@tofu,@chocolate])
 	end
 
@@ -304,16 +304,16 @@ RSpec.describe Alimentos do
 
 	end
 
-	describe Menu do
+	describe Plato do
 
-		it "crea Menu" do
-			@dietaEspanola = Menu.new()
-			expect(@dietaEspanola.class).to eq(Menu)
+		it "crea Plato" do
+			@dietaEspanola = Plato.new()
+			expect(@dietaEspanola.class).to eq(Plato)
 		end
 
-		it "añade alimentos al menu" do
+		it "añade alimentos al plato" do
 			@dietaTest.add([@carneVaca,@camarones,@cafe])
-			expect(@dietaTest.menu_size).to eq(3)
+			expect(@dietaTest.plato_size).to eq(3)
 		end
 
 		it "la dieta española tiene los porcentajes indicados de carbohidratos" do
@@ -360,19 +360,19 @@ RSpec.describe Alimentos do
 			expect(@dietaVegetaliana.contieneProcedenciaAnimal?).to be false
 		end
 
-		it "calcula las emisiones diarias de efecto invernadero de un menu" do
+		it "calcula las emisiones diarias de efecto invernadero de un plato" do
 			expect(@dietaEspanola.emisionesEfectoInvDiarias).to eq(22.7)
 			expect(@dietaVasca.emisionesEfectoInvDiarias).to eq(7)
 			expect(@dietaVegetaria.emisionesEfectoInvDiarias).to eq(8.3)
 		end
 
-		it "calcula las emisiones anuales de efecto invernadero de un menu" do
+		it "calcula las emisiones anuales de efecto invernadero de un plato" do
 			expect(@dietaEspanola.emisionesEfectoInvAnuales).to eq(8285.5)
 			expect(@dietaVasca.emisionesEfectoInvAnuales).to eq(2555.0)
 			expect(@dietaVegetaria.emisionesEfectoInvAnuales).to eq(3029.5)
 		end
 
-		it "calcula los metros cuadrados de uso de un menu" do
+		it "calcula los metros cuadrados de uso de un plato" do
 			expect(@dietaEspanola.terrenoTotal).to eq(188.7)
 			expect(@dietaVasca.terrenoTotal).to eq(12.4)
 			expect(@dietaVegetaria.terrenoTotal).to eq(10)

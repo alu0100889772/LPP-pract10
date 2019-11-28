@@ -1,37 +1,37 @@
 require "Alimentos/version"
 
-class Menu
-	attr_accessor :menu
+class Plato
+	attr_accessor :plato
 
 	def initialize()
-		@menu = Lista.new
+		@plato = Lista.new
 	end
 	
 	def add(arrayAlimentos)
 		if arrayAlimentos.is_a?(Array)
 			for alimento in arrayAlimentos do
 				if alimento.is_a?(Alimento)
-					@menu.push_tail(alimento)
+					@plato.push_tail(alimento)
 				end
 			end
 		end
 	end
 
-	def menu_size
-		return @menu.size
+	def plato_size
+		return @plato.size
 	end
 
 	def erase
-		@menu = Lista.new
+		@plato = Lista.new
 	end
 
 	def porcentajeCarboHidratos
 		result = 0
-		iterador = @menu.head
+		iterador = @plato.head
 		total = 0.0
 		carbohidratos = 0.0
 		
-		for i in (0..menu_size) do
+		for i in (0..plato_size) do
 			if(iterador!=nil)
 				total += iterador.value.carb_hidr + iterador.value.lipido + iterador.value.proteina
 				carbohidratos += iterador.value.carb_hidr
@@ -46,11 +46,11 @@ class Menu
 
 	def porcentajeLipido
 		result = 0
-		iterador = @menu.head
+		iterador = @plato.head
 		total = 0.0
 		lipidos = 0.0
 		
-		for i in (0..menu_size) do
+		for i in (0..plato_size) do
 			if(iterador!=nil)
 				total += iterador.value.carb_hidr + iterador.value.lipido + iterador.value.proteina
 				lipidos += iterador.value.lipido
@@ -65,11 +65,11 @@ class Menu
 
 	def porcentajeProteina
 		result = 0
-		iterador = @menu.head
+		iterador = @plato.head
 		total = 0.0
 		proteinas = 0.0
 		
-		for i in (0..menu_size) do
+		for i in (0..plato_size) do
 			if(iterador!=nil)
 				total += iterador.value.carb_hidr + iterador.value.lipido + iterador.value.proteina
 				proteinas += iterador.value.proteina
@@ -83,9 +83,9 @@ class Menu
 	end
 
 	def contieneCarne?
-		iterador = @menu.head
+		iterador = @plato.head
 		contieneCarne = false
-		for i in (0..menu_size) do
+		for i in (0..plato_size) do
 			if(iterador!=nil)
 				if(iterador.value.is_carne)
 					contieneCarne = true
@@ -97,9 +97,9 @@ class Menu
 	end
 
 	def contieneProcedenciaAnimal?
-		iterador = @menu.head
+		iterador = @plato.head
 		contieneProcedenciaAnimal = false
-		for i in (0..menu_size) do
+		for i in (0..plato_size) do
 			if(iterador!=nil)
 				if(iterador.value.is_origen_animal)
 					contieneProcedenciaAnimal = true
@@ -112,9 +112,9 @@ class Menu
 
 	
 	def emisionesEfectoInvDiarias
-		iterador = @menu.head
+		iterador = @plato.head
 		emisionesEfectoInvDiarias = 0
-		for i in (0..menu_size) do
+		for i in (0..plato_size) do
 			if(iterador!=nil)
 				emisionesEfectoInvDiarias += iterador.value.gei
 				iterador = iterador.next
@@ -129,9 +129,9 @@ class Menu
 
 	
 	def terrenoTotal
-		iterador = @menu.head
+		iterador = @plato.head
 		terrenoTotal = 0
-		for i in (0..menu_size) do
+		for i in (0..plato_size) do
 			if(iterador!=nil)
 				terrenoTotal += iterador.value.terreno
 				iterador = iterador.next
