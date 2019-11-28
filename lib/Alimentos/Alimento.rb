@@ -2,6 +2,9 @@ require "Alimentos/version"
 
 
 class Alimento
+
+	include Comparable
+
 	attr_reader :nombre, :proteina, :carb_hidr, :lipido, :gei, :terreno, :is_carne, :is_origen_animal
 
 	def initialize(nombre, proteina, carb_hidr, lipido, gei, terreno, is_carne, is_origen_animal)
@@ -25,6 +28,11 @@ class Alimento
 	def valor_energetico
 		(proteina*4+carb_hidr*4+lipido*9).round(2)
 	end
+
+	def <=>(other)
+		valor_energetico <=> other.valor_energetico
+	end
+
 end
 
 

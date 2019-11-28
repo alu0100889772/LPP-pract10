@@ -161,7 +161,7 @@ RSpec.describe Alimentos do
 		it "compara si un alimento es mayor a otro" do
 			
 			expect(@carneVaca > @carneVacaAux).to be false
-			expect(@carneVaca > @carneCordero).to be true
+			expect(@carneVaca > @cafe).to be true
 			expect(@carneVaca > @chocolate).to be false
 
 		end
@@ -169,7 +169,7 @@ RSpec.describe Alimentos do
 		it "compara si un alimento es mayor/igual a otro" do
 			
 			expect(@carneVaca >= @carneVacaAux).to be true
-			expect(@carneVaca >= @carneCordero).to be true
+			expect(@carneVaca >= @cafe).to be true
 			expect(@carneVaca >= @chocolate).to be false
 
 		end
