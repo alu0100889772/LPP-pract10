@@ -274,13 +274,13 @@ RSpec.describe Alimentos do
 
 		it "Comprobando el metodo del collect" do
 
-			expect(@lista2.collect{|i| i}).to eq([4,10,6,1,20])
+			expect(@lista2.collect{|i| i}).to eq([20,1,6,10,4])
 
      		end
 
      		it "Comprobando el metodo select" do
 
-			expect(@lista2.select{|i| i < 10}).to eq([4,6,1])
+			expect(@lista2.select{|i| i < 10}).to eq([1,6,4])
 
      		end
 
@@ -298,7 +298,7 @@ RSpec.describe Alimentos do
 
      		it "Comprobando el metodo sort" do
 
-			expect(@lista2.sort{ |a,b| b<=>a}).to eq([1,4,6,10,20])
+			expect(@lista2.sort{ |a,b| a<=>b}).to eq([1,4,6,10,20])
 
      		end
 

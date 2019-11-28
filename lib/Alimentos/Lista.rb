@@ -4,6 +4,8 @@ Node = Struct.new(:value, :next, :prev)
 
 class Lista
 
+	include Enumerable
+
 	attr_reader :head, :tail, :size
 	
 	def initialize()
@@ -80,4 +82,12 @@ class Lista
 			@size -= 1
 		end
 	end
+
+	def each 
+       		iterator = @head
+       		while iterator != nil 
+            		yield iterator.value
+            		iterator=iterator.next
+       		end
+    	end
 end
