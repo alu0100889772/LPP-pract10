@@ -21,6 +21,7 @@ RSpec.describe Alimentos do
 		nuez = 			{ nombre: "Nuez", 		proteina: 20, 	carb_hidr: 21, 	lipido: 54, 	gei: 0.3, 	terreno: 7.9,	carne: false,	origen_animal: false}
 
 		@carneVaca = Alimento.new(carne_de_vaca[:nombre],carne_de_vaca[:proteina],carne_de_vaca[:carb_hidr],carne_de_vaca[:lipido],carne_de_vaca[:gei],carne_de_vaca[:terreno],carne_de_vaca[:carne],carne_de_vaca[:origen_animal])
+		@carneVacaAux = Alimento.new(carne_de_vaca[:nombre],carne_de_vaca[:proteina],carne_de_vaca[:carb_hidr],carne_de_vaca[:lipido],carne_de_vaca[:gei],carne_de_vaca[:terreno],carne_de_vaca[:carne],carne_de_vaca[:origen_animal])			
 		@carneCordero = Alimento.new(carne_de_cordero[:nombre],carne_de_cordero[:proteina],carne_de_cordero[:carb_hidr],carne_de_cordero[:lipido],carne_de_cordero[:gei],carne_de_cordero[:terreno],carne_de_cordero[:carne],carne_de_cordero[:origen_animal])
 		@camarones = Alimento.new(camarones[:nombre],camarones[:proteina],camarones[:carb_hidr],camarones[:lipido],camarones[:gei],camarones[:terreno],camarones[:carne],camarones[:origen_animal])
 		@chocolate = Alimento.new(chocolate[:nombre],chocolate[:proteina],chocolate[:carb_hidr],chocolate[:lipido],chocolate[:gei],chocolate[:terreno],chocolate[:carne],chocolate[:origen_animal])
@@ -125,6 +126,64 @@ RSpec.describe Alimentos do
 			expect(@camarones.valor_energetico).to eq(81.8)
 			expect(@chocolate.valor_energetico).to eq(479.2)
 			expect(@salmon.valor_energetico).to eq(202)
+		end
+
+		it "compara si un alimento es igual a otro" do
+			
+			expect(@carneVaca == @carneVacaAux).to be true
+			expect(@carneVaca == @cafe).to be false
+
+		end
+
+		it "compara si un alimento es diferente a otro" do
+			
+			expect(@carneVaca != @carneVacaAux).to be false
+			expect(@carneVaca != @cafe).to be true
+
+		end
+
+		it "compara si un alimento es menor a otro" do
+			
+			expect(@carneVaca < @carneVacaAux).to be false
+			expect(@carneVaca < @cafe).to be false
+			expect(@carneVaca < @chocolate).to be true
+
+		end
+
+		it "compara si un alimento es menor/igual a otro" do
+			
+			expect(@carneVaca <= @carneVacaAux).to be true
+			expect(@carneVaca <= @cafe).to be false
+			expect(@carneVaca <= @chocolate).to be true
+
+		end
+
+		it "compara si un alimento es mayor a otro" do
+			
+			expect(@carneVaca > @carneVacaAux).to be false
+			expect(@carneVaca > @carneCordero).to be true
+			expect(@carneVaca > @chocolate).to be false
+
+		end
+
+		it "compara si un alimento es mayor/igual a otro" do
+			
+			expect(@carneVaca >= @carneVacaAux).to be true
+			expect(@carneVaca >= @carneCordero).to be true
+			expect(@carneVaca >= @chocolate).to be false
+
+		end
+
+		it "comprueba si un alimento se encuentra entre 2 alimentos" do
+			expect(@carneVaca.between?(@cafe,@chocolate)).to be true
+			expect(@cafe.between?(@carneVaca,@chocolate)).to be false
+			expect(@chocolate.between?(@cafe,@carneVaca)).to be false
+		end
+
+		it "comprueba si restringe un alimento para que no sea menor que uno ni mayor que otro" do
+			expect(@carneVaca.clamp(@cafe,@chocolate)).to eq(@carneVaca)
+			expect(@chocolate.clamp(@cafe,@carneVaca)).to eq(@carneVaca)
+			expect(@cafe.clamp(@carneVaca,@chocolate)).to eq(@carneVaca)
 		end
 
 	end
