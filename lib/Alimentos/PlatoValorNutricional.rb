@@ -1,6 +1,6 @@
 require "Alimentos/version"
 
-class Plato
+class PlatoValorNutricional
 	attr_accessor :plato, :nombre, :cantidades
 
 	def initialize(nombre)
