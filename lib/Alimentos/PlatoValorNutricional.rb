@@ -1,6 +1,9 @@
 require "Alimentos/version"
 
 class PlatoValorNutricional
+
+	include Comparable
+
 	attr_accessor :plato, :nombre, :cantidades
 
 	def initialize(nombre)
@@ -131,6 +134,12 @@ class PlatoValorNutricional
 		result += "Gramos totales: #{suma_gramos}\nValor calorico total: #{valorCaloricoTotal}\nPorcentaje de proteinas: #{porcentajeProteina}\nPorcentaje de carbohidratos: #{porcentajeCarboHidratos}\nPorcentaje de lipidos: #{porcentajeLipido}"
 
 		result
+	end
+
+
+
+	def <=>(other)
+		valorCaloricoTotal <=> other.valorCaloricoTotal
 	end
 
 end

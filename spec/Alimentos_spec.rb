@@ -480,7 +480,7 @@ RSpec.describe Alimentos do
 		end
 
 		it "el plato pertenece a una jerarquía" do
-			expect(@dietaEspanolaEficienciaEnergetica.class.ancestors).to eq([PlatoEficienciaEnergetica, PlatoValorNutricional, Object, Kernel, BasicObject])
+			expect(@dietaEspanolaEficienciaEnergetica.class.ancestors).to eq([PlatoEficienciaEnergetica, PlatoValorNutricional, Comparable, Object, Kernel, BasicObject])
 		end
 	end
 end
