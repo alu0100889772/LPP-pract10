@@ -372,24 +372,6 @@ RSpec.describe Alimentos do
 			expect(@dietaVegetaliana.contieneProcedenciaAnimal?).to be false
 		end
 
-		it "calcula las emisiones diarias de efecto invernadero de un plato" do
-			expect(@dietaEspanolaEficienciaEnergetica.emisionesEfectoInvDiarias).to eq(22.7)
-			expect(@dietaVascaEficienciaEnergetica.emisionesEfectoInvDiarias).to eq(7)
-			expect(@dietaVegetariaEficienciaEnergetica.emisionesEfectoInvDiarias).to eq(8.3)
-		end
-
-		it "calcula las emisiones anuales de efecto invernadero de un plato" do
-			expect(@dietaEspanolaEficienciaEnergetica.emisionesEfectoInvAnuales).to eq(8285.5)
-			expect(@dietaVascaEficienciaEnergetica.emisionesEfectoInvAnuales).to eq(2555.0)
-			expect(@dietaVegetariaEficienciaEnergetica.emisionesEfectoInvAnuales).to eq(3029.5)
-		end
-
-		it "calcula los metros cuadrados de uso de un plato" do
-			expect(@dietaEspanolaEficienciaEnergetica.terrenoTotal).to eq(188.7)
-			expect(@dietaVascaEficienciaEnergetica.terrenoTotal).to eq(12.4)
-			expect(@dietaVegetariaEficienciaEnergetica.terrenoTotal).to eq(10)
-		end
-
 		it "se tiene el nombre del plato" do
 			nombrePlato = "Plato casero"
 			platoCasero = PlatoValorNutricional.new(nombrePlato)
@@ -418,6 +400,30 @@ RSpec.describe Alimentos do
 	describe PlatoEficienciaEnergetica do
 		it "su padre es PlatoValorNutricional" do
 			expect(PlatoEficienciaEnergetica.superclass.name).to eq("PlatoValorNutricional")
+		end
+
+		it "calcula las emisiones diarias de efecto invernadero de un plato" do
+			expect(@dietaEspanolaEficienciaEnergetica.emisionesEfectoInvDiarias).to eq(22.7)
+			expect(@dietaVascaEficienciaEnergetica.emisionesEfectoInvDiarias).to eq(7)
+			expect(@dietaVegetariaEficienciaEnergetica.emisionesEfectoInvDiarias).to eq(8.3)
+		end
+
+		it "calcula las emisiones anuales de efecto invernadero de un plato" do
+			expect(@dietaEspanolaEficienciaEnergetica.emisionesEfectoInvAnuales).to eq(8285.5)
+			expect(@dietaVascaEficienciaEnergetica.emisionesEfectoInvAnuales).to eq(2555.0)
+			expect(@dietaVegetariaEficienciaEnergetica.emisionesEfectoInvAnuales).to eq(3029.5)
+		end
+
+		it "calcula los metros cuadrados de uso de un plato" do
+			expect(@dietaEspanolaEficienciaEnergetica.terrenoTotal).to eq(188.7)
+			expect(@dietaVascaEficienciaEnergetica.terrenoTotal).to eq(12.4)
+			expect(@dietaVegetariaEficienciaEnergetica.terrenoTotal).to eq(10)
+		end
+
+		it "se obtiene el plato formateado" do
+			plato_formateado = "\nplato de dieta española:\n\n#{@carneCordero.nombre}:\n\tProteínas: #{@carneCordero.proteina}\n\tCarbohidratos: #{@carneCordero.carb_hidr}\n\tLípidos: #{@carneCordero.lipido}\n\tGEI: #{@carneCordero.gei}\n\tTerreno: #{@carneCordero.terreno}\n\n#{@chocolate.nombre}:\n\tProteínas: #{@chocolate.proteina}\n\tCarbohidratos: #{@chocolate.carb_hidr}\n\tLípidos: #{@chocolate.lipido}\n\tGEI: #{@chocolate.gei}\n\tTerreno: #{@chocolate.terreno}\n\n#{@cafe.nombre}:\n\tProteínas: #{@cafe.proteina}\n\tCarbohidratos: #{@cafe.carb_hidr}\n\tLípidos: #{@cafe.lipido}\n\tGEI: #{@cafe.gei}\n\tTerreno: #{@cafe.terreno}\n\nEmisiones de gases de efecto invernadero diarias: #{@dietaEspanolaEficienciaEnergetica.emisionesEfectoInvDiarias}\nTerreno total utilizado: #{@dietaEspanolaEficienciaEnergetica.terrenoTotal}"
+
+			expect(@dietaEspanolaEficienciaEnergetica.to_s).to eq(plato_formateado)
 		end
 	end
 end
