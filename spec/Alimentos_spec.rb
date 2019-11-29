@@ -54,6 +54,9 @@ RSpec.describe Alimentos do
 		@dietaEspanola = PlatoValorNutricional.new("plato de dieta española")
 		@dietaEspanola.add([@carneCordero,@chocolate,@cafe])
 
+		@dietaEspanolaAux = PlatoValorNutricional.new("plato de dieta española")
+		@dietaEspanolaAux.add([@carneCordero,@chocolate,@cafe])
+
 		@dietaVasca = PlatoValorNutricional.new("plato de dieta vasca")
 		@dietaVasca.add([@lentejas,@chocolate,@chocolate,@tofu])
 
@@ -393,6 +396,52 @@ RSpec.describe Alimentos do
 			plato_formateado = "\nplato de dieta española:\n\n#{@carneCordero.nombre}:\n\tProteínas: #{@carneCordero.proteina}\n\tCarbohidratos: #{@carneCordero.carb_hidr}\n\tLípidos: #{@carneCordero.lipido}\n\tGEI: #{@carneCordero.gei}\n\tTerreno: #{@carneCordero.terreno}\n\n#{@chocolate.nombre}:\n\tProteínas: #{@chocolate.proteina}\n\tCarbohidratos: #{@chocolate.carb_hidr}\n\tLípidos: #{@chocolate.lipido}\n\tGEI: #{@chocolate.gei}\n\tTerreno: #{@chocolate.terreno}\n\n#{@cafe.nombre}:\n\tProteínas: #{@cafe.proteina}\n\tCarbohidratos: #{@cafe.carb_hidr}\n\tLípidos: #{@cafe.lipido}\n\tGEI: #{@cafe.gei}\n\tTerreno: #{@cafe.terreno}\n\nGramos totales: #{suma_gramos}\nValor calorico total: #{@dietaEspanola.valorCaloricoTotal}\nPorcentaje de proteinas: #{@dietaEspanola.porcentajeProteina}\nPorcentaje de carbohidratos: #{@dietaEspanola.porcentajeCarboHidratos}\nPorcentaje de lipidos: #{@dietaEspanola.porcentajeLipido}"
 
 			expect(@dietaEspanola.to_s).to eq(plato_formateado)
+		end
+
+		it "compara si un plato es igual a otro" do
+			
+			expect(@dietaEspanola == @dietaEspanolaAux).to be true
+			expect(@dietaEspanola == @dietaVasca).to be false
+
+		end
+
+		it "compara si un plato es diferente a otro" do
+			
+			expect(@dietaEspanola != @dietaEspanolaAux).to be false
+			expect(@dietaEspanola != @dietaVasca).to be true
+
+		end
+
+		it "compara si un plato es menor a otro" do
+			
+			expect(@dietaEspanola < @dietaEspanolaAux).to be false
+			expect(@dietaVegetaria < @dietaEspanola).to be false
+			expect(@dietaVegetaria < @dietaVasca).to be true
+
+		end
+
+		it "compara si un plato es menor/igual a otro" do
+			
+			expect(@dietaEspanola <= @dietaEspanolaAux).to be true
+			expect(@dietaVegetaria <= @dietaEspanola).to be false
+			expect(@dietaVegetaria <= @dietaVasca).to be true
+
+		end
+
+		it "compara si un plato es mayor a otro" do
+			
+			expect(@dietaEspanola > @dietaEspanolaAux).to be false
+			expect(@dietaVegetaria > @dietaEspanola).to be true
+			expect(@dietaVegetaria > @dietaVasca).to be false
+
+		end
+
+		it "compara si un plato es mayor/igual a otro" do
+			
+			expect(@dietaEspanola >= @dietaEspanolaAux).to be true
+			expect(@dietaVegetaria >= @dietaEspanola).to be true
+			expect(@dietaVegetaria >= @dietaVasca).to be false
+
 		end
 
 	end
