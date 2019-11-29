@@ -388,5 +388,9 @@ RSpec.describe Alimentos do
 			expect(@dietaEspanola.cantidades.collect{|i| i}).to eq([35,82.3,0.1])
 		end
 
+		it "existe el valor calorico total del plao" do
+			expect(@dietaEspanola.valorCaloricoTotal).to eq(704.6)
+		end
+
 	end
 end
