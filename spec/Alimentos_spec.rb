@@ -63,9 +63,18 @@ RSpec.describe Alimentos do
 		@dietaVegetaliana = PlatoValorNutricional.new("plato de dieta vegetaliana")
 		@dietaVegetaliana.add([@tofu,@chocolate])
 
+
 		@dietaEspanolaEficienciaEnergetica = PlatoEficienciaEnergetica.new("plato de dieta española")
 		@dietaEspanolaEficienciaEnergetica.add([@carneCordero,@chocolate,@cafe])
 
+		@dietaVascaEficienciaEnergetica = PlatoEficienciaEnergetica.new("plato de dieta vasca")
+		@dietaVascaEficienciaEnergetica.add([@lentejas,@chocolate,@chocolate,@tofu])
+
+		@dietaVegetariaEficienciaEnergetica = PlatoEficienciaEnergetica.new("plato de dieta vegetaria")
+		@dietaVegetariaEficienciaEnergetica.add([@chocolate,@tofu,@tofu,@tofu])
+
+		@dietaVegetalianaEficienciaEnergetica = PlatoEficienciaEnergetica.new("plato de dieta vegetaliana")
+		@dietaVegetalianaEficienciaEnergetica.add([@tofu,@chocolate])
 	end
 
 	it "has a version number" do
@@ -364,21 +373,21 @@ RSpec.describe Alimentos do
 		end
 
 		it "calcula las emisiones diarias de efecto invernadero de un plato" do
-			expect(@dietaEspanola.emisionesEfectoInvDiarias).to eq(22.7)
-			expect(@dietaVasca.emisionesEfectoInvDiarias).to eq(7)
-			expect(@dietaVegetaria.emisionesEfectoInvDiarias).to eq(8.3)
+			expect(@dietaEspanolaEficienciaEnergetica.emisionesEfectoInvDiarias).to eq(22.7)
+			expect(@dietaVascaEficienciaEnergetica.emisionesEfectoInvDiarias).to eq(7)
+			expect(@dietaVegetariaEficienciaEnergetica.emisionesEfectoInvDiarias).to eq(8.3)
 		end
 
 		it "calcula las emisiones anuales de efecto invernadero de un plato" do
-			expect(@dietaEspanola.emisionesEfectoInvAnuales).to eq(8285.5)
-			expect(@dietaVasca.emisionesEfectoInvAnuales).to eq(2555.0)
-			expect(@dietaVegetaria.emisionesEfectoInvAnuales).to eq(3029.5)
+			expect(@dietaEspanolaEficienciaEnergetica.emisionesEfectoInvAnuales).to eq(8285.5)
+			expect(@dietaVascaEficienciaEnergetica.emisionesEfectoInvAnuales).to eq(2555.0)
+			expect(@dietaVegetariaEficienciaEnergetica.emisionesEfectoInvAnuales).to eq(3029.5)
 		end
 
 		it "calcula los metros cuadrados de uso de un plato" do
-			expect(@dietaEspanola.terrenoTotal).to eq(188.7)
-			expect(@dietaVasca.terrenoTotal).to eq(12.4)
-			expect(@dietaVegetaria.terrenoTotal).to eq(10)
+			expect(@dietaEspanolaEficienciaEnergetica.terrenoTotal).to eq(188.7)
+			expect(@dietaVascaEficienciaEnergetica.terrenoTotal).to eq(12.4)
+			expect(@dietaVegetariaEficienciaEnergetica.terrenoTotal).to eq(10)
 		end
 
 		it "se tiene el nombre del plato" do
