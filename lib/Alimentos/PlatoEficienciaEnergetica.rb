@@ -35,4 +35,18 @@ class PlatoEficienciaEnergetica < PlatoValorNutricional
 		return terrenoTotal.round(2)
 	end
 
+	def to_s
+
+		suma_gramos = 0
+		cantidades.collect{|i| suma_gramos += i}
+
+		result = "\nplato de dieta española:\n\n"
+		
+		
+		@plato.collect{|i| result += i.to_s + "\n"}
+		result += "Emisiones de gases de efecto invernadero diarias: #{emisionesEfectoInvDiarias}\nTerreno total utilizado: #{terrenoTotal}"
+
+		result
+	end
+
 end
