@@ -62,6 +62,7 @@ RSpec.describe Alimentos do
 
 		@dietaVegetaliana = Plato.new()
 		@dietaVegetaliana.add([@tofu,@chocolate])
+
 	end
 
 	it "has a version number" do
@@ -376,6 +377,12 @@ RSpec.describe Alimentos do
 			expect(@dietaEspanola.terrenoTotal).to eq(188.7)
 			expect(@dietaVasca.terrenoTotal).to eq(12.4)
 			expect(@dietaVegetaria.terrenoTotal).to eq(10)
+		end
+
+		it "se tiene el nombre del plato" do
+			nombrePlato = "Plato casero"
+			platoCasero = Plato.new(nombrePlato)
+			expect(@platoAux.nombre).to eq(nombrePlato)
 		end
 
 	end

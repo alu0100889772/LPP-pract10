@@ -1,8 +1,7 @@
-require 'Alimentos/Alimento'
 require "Alimentos/Alimento"
 require "Alimentos/Persona"
 require "Alimentos/Lista"
-require "Alimentos/Menu"
+require "Alimentos/Plato"
 
 module Alimentos
   VERSION = "0.1.1"
