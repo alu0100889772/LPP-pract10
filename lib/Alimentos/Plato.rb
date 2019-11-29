@@ -143,4 +143,10 @@ class Plato
 		return terrenoTotal.round(2)
 	end
 
+	def valorCaloricoTotal
+		result = 0
+		plato.each{|i| result += i.valor_energetico}
+		result
+	end
+
 end
