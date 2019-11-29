@@ -149,4 +149,18 @@ class Plato
 		result
 	end
 
+	def to_s
+
+		suma_gramos = 0
+		cantidades.collect{|i| suma_gramos += i}
+
+		result = "\nplato de dieta española:\n\n"
+		
+		
+		@plato.collect{|i| result += i.to_s + "\n"}
+		result += "Gramos totales: #{suma_gramos}\nValor calorico total: #{valorCaloricoTotal}\nPorcentaje de proteinas: #{porcentajeProteina}\nPorcentaje de carbohidratos: #{porcentajeCarboHidratos}\nPorcentaje de lipidos: #{porcentajeLipido}"
+
+		result
+	end
+
 end
