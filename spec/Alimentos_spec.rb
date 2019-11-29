@@ -429,5 +429,9 @@ RSpec.describe Alimentos do
 		it "el plato de eficiencia energetica pertenece a la clase PlatoEficienciaEnergetica" do
 			expect(@dietaEspanolaEficienciaEnergetica.is_a?(PlatoEficienciaEnergetica)).to be true
 		end
+
+		it "el plato pertenece a una jerarquía" do
+			expect(@dietaEspanolaEficienciaEnergetica.class.ancestors).to eq([PlatoEficienciaEnergetica, PlatoValorNutricional, Object, Kernel, BasicObject])
+		end
 	end
 end
