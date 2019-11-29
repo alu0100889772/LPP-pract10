@@ -425,5 +425,9 @@ RSpec.describe Alimentos do
 
 			expect(@dietaEspanolaEficienciaEnergetica.to_s).to eq(plato_formateado)
 		end
+
+		it "el plato de eficiencia energetica pertenece a la clase PlatoEficienciaEnergetica" do
+			expect(@dietaEspanolaEficienciaEnergetica.is_a?(PlatoEficienciaEnergetica)).to be true
+		end
 	end
 end
