@@ -1,9 +1,10 @@
 require "Alimentos/version"
 
 class Plato
-	attr_accessor :plato
+	attr_accessor :plato, :nombre
 
-	def initialize()
+	def initialize(nombre)
+		@nombre = nombre
 		@plato = Lista.new
 	end
 	

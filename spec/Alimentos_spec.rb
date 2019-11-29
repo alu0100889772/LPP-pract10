@@ -49,18 +49,18 @@ RSpec.describe Alimentos do
 		@lista2.push_head(1)
 		@lista2.push_head(20)
 
-		@dietaTest = Plato.new()
+		@dietaTest = Plato.new("test")
 
-		@dietaEspanola = Plato.new()
+		@dietaEspanola = Plato.new("plato de dieta española")
 		@dietaEspanola.add([@carneCordero,@chocolate,@cafe])
 
-		@dietaVasca = Plato.new()
+		@dietaVasca = Plato.new("plato de dieta vasca")
 		@dietaVasca.add([@lentejas,@chocolate,@chocolate,@tofu])
 
-		@dietaVegetaria = Plato.new()
+		@dietaVegetaria = Plato.new("plato de dieta vegetaria")
 		@dietaVegetaria.add([@chocolate,@tofu,@tofu,@tofu])
 
-		@dietaVegetaliana = Plato.new()
+		@dietaVegetaliana = Plato.new("plato de dieta vegetaliana")
 		@dietaVegetaliana.add([@tofu,@chocolate])
 
 	end
@@ -308,7 +308,6 @@ RSpec.describe Alimentos do
 	describe Plato do
 
 		it "crea Plato" do
-			@dietaEspanola = Plato.new()
 			expect(@dietaEspanola.class).to eq(Plato)
 		end
 
@@ -382,7 +381,7 @@ RSpec.describe Alimentos do
 		it "se tiene el nombre del plato" do
 			nombrePlato = "Plato casero"
 			platoCasero = Plato.new(nombrePlato)
-			expect(@platoAux.nombre).to eq(nombrePlato)
+			expect(platoCasero.nombre).to eq(nombrePlato)
 		end
 
 	end
