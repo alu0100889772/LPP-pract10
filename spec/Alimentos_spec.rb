@@ -392,5 +392,14 @@ RSpec.describe Alimentos do
 			expect(@dietaEspanola.valorCaloricoTotal).to eq(704.6)
 		end
 
+		it "se obtiene el plato formateado" do
+			suma_gramos = 0
+			@dietaEspanola.cantidades.collect{|i| suma_gramos += i}
+
+			plato_formateado = "\nplato de dieta española:\n\n#{@carneCordero.nombre}:\n\tProteínas: #{@carneCordero.proteina}\n\tCarbohidratos: #{@carneCordero.carb_hidr}\n\tLípidos: #{@carneCordero.lipido}\n\tGEI: #{@carneCordero.gei}\n\tTerreno: #{@carneCordero.terreno}\n\n#{@chocolate.nombre}:\n\tProteínas: #{@chocolate.proteina}\n\tCarbohidratos: #{@chocolate.carb_hidr}\n\tLípidos: #{@chocolate.lipido}\n\tGEI: #{@chocolate.gei}\n\tTerreno: #{@chocolate.terreno}\n\n#{@cafe.nombre}:\n\tProteínas: #{@cafe.proteina}\n\tCarbohidratos: #{@cafe.carb_hidr}\n\tLípidos: #{@cafe.lipido}\n\tGEI: #{@cafe.gei}\n\tTerreno: #{@cafe.terreno}\n\nGramos totales: #{suma_gramos}\nValor calorico total: #{@dietaEspanola.valorCaloricoTotal}\nPorcentaje de proteinas: #{@dietaEspanola.porcentajeProteina}\nPorcentaje de carbohidratos: #{@dietaEspanola.porcentajeCarboHidrato}\nPorcentaje de lipidos: #{@dietaEspanola.porcentajeLipido}"
+
+			expect(@dietaEspanola.to_s).to eq(plato_formateado)
+		end
+
 	end
 end
