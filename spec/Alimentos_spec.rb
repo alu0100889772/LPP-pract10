@@ -81,6 +81,12 @@ RSpec.describe Alimentos do
 
 		@dietaVegetalianaEficienciaEnergetica = PlatoEficienciaEnergetica.new("plato de dieta vegetaliana")
 		@dietaVegetalianaEficienciaEnergetica.add([@tofu,@chocolate])
+
+		@listaPlatos = Lista.new
+
+		@listaPlatos.push_tail(@dietaEspanolaEficienciaEnergetica)
+		@listaPlatos.push_tail(@dietaVegetalianaEficienciaEnergetica)
+		@listaPlatos.push_tail(@dietaVascaEficienciaEnergetica)
 	end
 
 	it "has a version number" do
@@ -318,6 +324,36 @@ RSpec.describe Alimentos do
      		it "Comprobando el metodo sort" do
 
 			expect(@lista2.sort{ |a,b| a<=>b}).to eq([1,4,6,10,20])
+
+     		end
+
+		it "Comprobando el metodo del collect con platos" do
+
+			expect(@listaPlatos.collect{|i| i.nombre.to_s}).to eq(["plato de dieta española", "plato de dieta vegetaliana", "plato de dieta vasca"])
+
+     		end
+
+     		it "Comprobando el metodo select con platos" do
+
+			expect(@listaPlatos.select{|i| i.plato_size >= 4 }).to eq([@dietaVascaEficienciaEnergetica])
+
+     		end
+
+     		it "comprobando el metodo max con platos" do
+
+			expect(@listaPlatos.max).to eq(@dietaEspanolaEficienciaEnergetica)
+
+     		end
+
+     		it "Comprobando el metodo min con platos" do
+
+			expect(@listaPlatos.min).to eq(@dietaVegetalianaEficienciaEnergetica)
+
+     		end
+
+     		it "Comprobando el metodo sort con platos" do
+
+			expect(@listaPlatos.sort{ |a,b| a<=>b}).to eq([@dietaVegetalianaEficienciaEnergetica,@dietaVascaEficienciaEnergetica,@dietaEspanolaEficienciaEnergetica])
 
      		end
 
