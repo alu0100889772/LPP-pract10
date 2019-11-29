@@ -49,4 +49,10 @@ class PlatoEficienciaEnergetica < PlatoValorNutricional
 		result
 	end
 
+	
+
+	def <=>(other)
+		emisionesEfectoInvDiarias <=> other.emisionesEfectoInvDiarias
+	end
+
 end
