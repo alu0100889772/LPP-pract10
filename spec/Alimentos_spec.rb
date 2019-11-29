@@ -64,8 +64,10 @@ RSpec.describe Alimentos do
 		@dietaVegetaria.add([@chocolate,@tofu,@tofu,@tofu])
 
 		@dietaVegetaliana = PlatoValorNutricional.new("plato de dieta vegetaliana")
-		@dietaVegetaliana.add([@tofu,@chocolate])
+		@dietaVegetaliana.add([@lentejas,@nuez])
 
+		@dietaLocuraCarne = PlatoValorNutricional.new("plato de locura por la carne")
+		@dietaLocuraCarne.add([@carneCordero,@carneVaca,@lentejas])
 
 		@dietaEspanolaEficienciaEnergetica = PlatoEficienciaEnergetica.new("plato de dieta española")
 		@dietaEspanolaEficienciaEnergetica.add([@carneCordero,@chocolate,@cafe])
@@ -80,13 +82,18 @@ RSpec.describe Alimentos do
 		@dietaVegetariaEficienciaEnergetica.add([@chocolate,@tofu,@tofu,@tofu])
 
 		@dietaVegetalianaEficienciaEnergetica = PlatoEficienciaEnergetica.new("plato de dieta vegetaliana")
-		@dietaVegetalianaEficienciaEnergetica.add([@tofu,@chocolate])
+		@dietaVegetalianaEficienciaEnergetica.add([@lentejas,@nuez])
+
+		@dietaLocuraCarneEficienciaEnergetica = PlatoEficienciaEnergetica.new("plato de locura por la carne")
+		@dietaLocuraCarneEficienciaEnergetica.add([@carneCordero,@carneVaca,@lentejas])
 
 		@listaPlatos = Lista.new
 
 		@listaPlatos.push_tail(@dietaEspanolaEficienciaEnergetica)
 		@listaPlatos.push_tail(@dietaVegetalianaEficienciaEnergetica)
 		@listaPlatos.push_tail(@dietaVascaEficienciaEnergetica)
+		@listaPlatos.push_tail(@dietaVegetariaEficienciaEnergetica)
+		@listaPlatos.push_tail(@dietaLocuraCarneEficienciaEnergetica)
 	end
 
 	it "has a version number" do
@@ -329,19 +336,19 @@ RSpec.describe Alimentos do
 
 		it "Comprobando el metodo del collect con platos" do
 
-			expect(@listaPlatos.collect{|i| i.nombre.to_s}).to eq(["plato de dieta española", "plato de dieta vegetaliana", "plato de dieta vasca"])
+			expect(@listaPlatos.collect{|i| i.nombre.to_s}).to eq(["plato de dieta española", "plato de dieta vegetaliana", "plato de dieta vasca", "plato de dieta vegetaria", "plato de locura por la carne"])
 
      		end
 
      		it "Comprobando el metodo select con platos" do
 
-			expect(@listaPlatos.select{|i| i.plato_size >= 4 }).to eq([@dietaVascaEficienciaEnergetica])
+			expect(@listaPlatos.select{|i| i.plato_size >= 4 }).to eq([@dietaVascaEficienciaEnergetica,@dietaVegetariaEficienciaEnergetica])
 
      		end
 
      		it "comprobando el metodo max con platos" do
 
-			expect(@listaPlatos.max).to eq(@dietaEspanolaEficienciaEnergetica)
+			expect(@listaPlatos.max).to eq(@dietaLocuraCarneEficienciaEnergetica)
 
      		end
 
@@ -353,7 +360,7 @@ RSpec.describe Alimentos do
 
      		it "Comprobando el metodo sort con platos" do
 
-			expect(@listaPlatos.sort{ |a,b| a<=>b}).to eq([@dietaVegetalianaEficienciaEnergetica,@dietaVascaEficienciaEnergetica,@dietaEspanolaEficienciaEnergetica])
+			expect(@listaPlatos.sort{ |a,b| a<=>b}).to eq([@dietaVegetalianaEficienciaEnergetica,@dietaVascaEficienciaEnergetica,@dietaVegetariaEficienciaEnergetica,@dietaEspanolaEficienciaEnergetica,@dietaLocuraCarneEficienciaEnergetica])
 
      		end
 
@@ -412,6 +419,27 @@ RSpec.describe Alimentos do
 
 		it "la dieta vegetaliana no contiene alimentos procedentes de animales" do
 			expect(@dietaVegetaliana.contieneProcedenciaAnimal?).to be false
+		end
+		
+		it "en la dieta vegetaliana, la porción de dieta correpondiente a proteı́nas se reparte de forma proporcional" do
+			proteinasTotales = 0;
+			@dietaVegetaliana.plato.collect{|i| proteinasTotales += i.proteina}
+			proporcionEstimada = 100 / @dietaVegetaliana.plato.size
+
+			@dietaVegetaliana.plato.collect{|i| expect((i.proteina/proteinasTotales)*100).to be_between(proporcionEstimada-5,proporcionEstimada+5)}
+		end
+
+		it "la dieta locura por la carne tiene en torno a un 50% de kilocalorias porcedentes de carne" do
+			kilocaloriasTotales = 0
+			kilocaloriasCarne = 0
+			@dietaLocuraCarne.plato.collect do |i|
+				kilocaloriasTotales += i.valor_energetico
+				if(i.is_carne)
+					kilocaloriasCarne += i.valor_energetico
+				end
+			end
+
+			expect((kilocaloriasCarne/kilocaloriasTotales)*100).to be_between(45,55)
 		end
 
 		it "se tiene el nombre del plato" do
