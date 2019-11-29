@@ -1,11 +1,12 @@
 require "Alimentos/version"
 
 class Plato
-	attr_accessor :plato, :nombre
+	attr_accessor :plato, :nombre, :cantidades
 
 	def initialize(nombre)
 		@nombre = nombre
 		@plato = Lista.new
+		@cantidades = Lista.new
 	end
 	
 	def add(arrayAlimentos)
@@ -13,6 +14,7 @@ class Plato
 			for alimento in arrayAlimentos do
 				if alimento.is_a?(Alimento)
 					@plato.push_tail(alimento)
+					@cantidades.push_tail(alimento.proteina + alimento.carb_hidr + alimento.lipido)
 				end
 			end
 		end
