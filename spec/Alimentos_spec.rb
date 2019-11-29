@@ -384,5 +384,9 @@ RSpec.describe Alimentos do
 			expect(platoCasero.nombre).to eq(nombrePlato)
 		end
 
+		it "existe un conjunto de cantidades de alimentos en gramos" do
+			expect(@dietaEspanola.cantidades.collect{|i| i}).to eq([35,82.3,0.1])
+		end
+
 	end
 end
