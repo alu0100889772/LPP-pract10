@@ -70,6 +70,9 @@ RSpec.describe Alimentos do
 		@dietaEspanolaEficienciaEnergetica = PlatoEficienciaEnergetica.new("plato de dieta española")
 		@dietaEspanolaEficienciaEnergetica.add([@carneCordero,@chocolate,@cafe])
 
+		@dietaEspanolaEficienciaEnergeticaAux = PlatoEficienciaEnergetica.new("plato de dieta española")
+		@dietaEspanolaEficienciaEnergeticaAux.add([@carneCordero,@chocolate,@cafe])
+
 		@dietaVascaEficienciaEnergetica = PlatoEficienciaEnergetica.new("plato de dieta vasca")
 		@dietaVascaEficienciaEnergetica.add([@lentejas,@chocolate,@chocolate,@tofu])
 
@@ -481,6 +484,52 @@ RSpec.describe Alimentos do
 
 		it "el plato pertenece a una jerarquía" do
 			expect(@dietaEspanolaEficienciaEnergetica.class.ancestors).to eq([PlatoEficienciaEnergetica, PlatoValorNutricional, Comparable, Object, Kernel, BasicObject])
+		end
+
+		it "compara si un plato es igual a otro" do
+			
+			expect(@dietaEspanolaEficienciaEnergetica == @dietaEspanolaEficienciaEnergeticaAux).to be true
+			expect(@dietaEspanolaEficienciaEnergetica == @dietaVascaEficienciaEnergetica).to be false
+
+		end
+
+		it "compara si un plato es diferente a otro" do
+			
+			expect(@dietaEspanolaEficienciaEnergetica != @dietaEspanolaEficienciaEnergeticaAux).to be false
+			expect(@dietaEspanolaEficienciaEnergetica != @dietaVascaEficienciaEnergetica).to be true
+
+		end
+
+		it "compara si un plato es menor a otro" do
+			
+			expect(@dietaEspanolaEficienciaEnergetica < @dietaEspanolaEficienciaEnergeticaAux).to be false
+			expect(@dietaVegetariaEficienciaEnergetica < @dietaVascaEficienciaEnergetica).to be false
+			expect(@dietaVegetariaEficienciaEnergetica < @dietaEspanolaEficienciaEnergetica).to be true
+
+		end
+
+		it "compara si un plato es menor/igual a otro" do
+			
+			expect(@dietaEspanolaEficienciaEnergetica <= @dietaEspanolaEficienciaEnergeticaAux).to be true
+			expect(@dietaVegetariaEficienciaEnergetica <= @dietaVascaEficienciaEnergetica).to be false
+			expect(@dietaVegetariaEficienciaEnergetica <= @dietaEspanolaEficienciaEnergetica).to be true
+
+		end
+
+		it "compara si un plato es mayor a otro" do
+			
+			expect(@dietaEspanolaEficienciaEnergetica > @dietaEspanolaEficienciaEnergeticaAux).to be false
+			expect(@dietaVegetariaEficienciaEnergetica > @dietaVascaEficienciaEnergetica).to be true
+			expect(@dietaVegetariaEficienciaEnergetica > @dietaEspanolaEficienciaEnergetica).to be false
+
+		end
+
+		it "compara si un plato es mayor/igual a otro" do
+			
+			expect(@dietaEspanolaEficienciaEnergetica >= @dietaEspanolaEficienciaEnergeticaAux).to be true
+			expect(@dietaVegetariaEficienciaEnergetica >= @dietaVascaEficienciaEnergetica).to be true
+			expect(@dietaVegetariaEficienciaEnergetica >= @dietaEspanolaEficienciaEnergetica).to be false
+
 		end
 	end
 end
