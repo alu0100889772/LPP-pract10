@@ -127,7 +127,7 @@ class PlatoValorNutricional
 		suma_gramos = 0
 		cantidades.collect{|i| suma_gramos += i}
 
-		result = "\nplato de dieta española:\n\n"
+		result = "\n#{@nombre}:\n\n"
 		
 		
 		@plato.collect{|i| result += i.to_s + "\n"}
@@ -142,4 +142,57 @@ class PlatoValorNutricional
 		valorCaloricoTotal <=> other.valorCaloricoTotal
 	end
 
+	def indice_impacto_energia
+		energia = 2;
+		if(valorCaloricoTotal < 670)
+			energia = 1;
+		elsif(valorCaloricoTotal > 830)
+			energia = 3;
+		end
+		energia
+	end
+
+	def indice_impacto_huella_carbono
+		huella = 2;
+		if(emisionesEfectoInvDiarias < 800)
+			huella = 1;
+		elsif(emisionesEfectoInvDiarias > 1200)
+			huella = 3;
+		end
+		huella
+	end
+
+	def huella_nutricional
+		
+		return (indice_impacto_huella_carbono+indice_impacto_energia)/2.0;
+
+	end
+
+	def emisionesEfectoInvDiarias
+		iterador = @plato.head
+		emisionesEfectoInvDiarias = 0
+		for i in (0..plato_size) do
+			if(iterador!=nil)
+				emisionesEfectoInvDiarias += iterador.value.gei
+				iterador = iterador.next
+			end
+		end
+		return emisionesEfectoInvDiarias.round(2)
+	end
+
+	def emisionesEfectoInvAnuales
+		return (emisionesEfectoInvDiarias*365).round(2)
+	end
+
+	def terrenoTotal
+		iterador = @plato.head
+		terrenoTotal = 0
+		for i in (0..plato_size) do
+			if(iterador!=nil)
+				terrenoTotal += iterador.value.terreno
+				iterador = iterador.next
+			end
+		end
+		return terrenoTotal.round(2)
+	end
 end
