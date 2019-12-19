@@ -511,6 +511,14 @@ RSpec.describe Alimentos do
 
 		end
 
+		it "calcula la huella nutricional" do
+			expect(@dietaEspanola.huella_nutricional).to eq(1.5)
+			expect(@dietaVasca.huella_nutricional).to eq(2)
+			expect(@dietaVegetaria.huella_nutricional).to eq(1.5)
+			expect(@dietaVegetaliana.huella_nutricional).to eq(2)
+			expect(@dietaLocuraCarne.huella_nutricional).to eq(1)
+		end
+
 	end
 
 	describe PlatoEficienciaEnergetica do
