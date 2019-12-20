@@ -527,6 +527,11 @@ RSpec.describe Alimentos do
 			expect(media_huella_nutricional.round(2)).to eq(1.6)
 		end
 
+		it "se calcula el plato con la mayor huella de un menú" do
+			plato_mayor_huella = @menu_dietetico.max_by { |i| i.huella_nutricional}
+			expect(plato_mayor_huella).to eq(@dietaVasca)
+		end
+
 	end
 
 	describe PlatoEficienciaEnergetica do
