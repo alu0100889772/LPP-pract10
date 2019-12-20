@@ -94,6 +94,9 @@ RSpec.describe Alimentos do
 		@listaPlatos.push_tail(@dietaVascaEficienciaEnergetica)
 		@listaPlatos.push_tail(@dietaVegetariaEficienciaEnergetica)
 		@listaPlatos.push_tail(@dietaLocuraCarneEficienciaEnergetica)
+
+		@menu_dietetico = [@dietaEspanola,@dietaVasca,@dietaVegetaria,@dietaVegetaliana, @dietaLocuraCarne]
+
 	end
 
 	it "has a version number" do
@@ -517,6 +520,11 @@ RSpec.describe Alimentos do
 			expect(@dietaVegetaria.huella_nutricional).to eq(1.5)
 			expect(@dietaVegetaliana.huella_nutricional).to eq(2)
 			expect(@dietaLocuraCarne.huella_nutricional).to eq(1)
+		end
+
+		it "calcula la media de huellas nutricionales de todos los platos de un menú" do
+			media_huella_nutricional = @menu_dietetico.reduce(0) { |media, i| media + (i.huella_nutricional/@menu_dietetico.length)}
+			expect(media_huella_nutricional.round(2)).to eq(1.6)
 		end
 
 	end
