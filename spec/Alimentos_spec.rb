@@ -96,7 +96,7 @@ RSpec.describe Alimentos do
 		@listaPlatos.push_tail(@dietaLocuraCarneEficienciaEnergetica)
 
 		@menu_dietetico = [@dietaEspanola,@dietaVasca,@dietaVegetaria,@dietaVegetaliana, @dietaLocuraCarne]
-
+		@precios_menu = []
 	end
 
 	it "has a version number" do
@@ -530,6 +530,13 @@ RSpec.describe Alimentos do
 		it "se calcula el plato con la mayor huella de un menú" do
 			plato_mayor_huella = @menu_dietetico.max_by { |i| i.huella_nutricional}
 			expect(plato_mayor_huella).to eq(@dietaVasca)
+		end
+
+		it "calcula el array de precios del menu" do
+			precio_mayor = 100.0
+			plato_mayor_huella = @menu_dietetico.max_by { |i| i.huella_nutricional}
+			@precios_menu = @menu_dietetico.collect { |i| (i.huella_nutricional/plato_mayor_huella.huella_nutricional)*precio_mayor}
+			expect(@precios_menu).to eq([75,100,75,100,50])
 		end
 
 	end
