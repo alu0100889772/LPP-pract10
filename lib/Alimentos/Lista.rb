@@ -1,3 +1,5 @@
+# @author Alberto Delgado Soler
+
 require "Alimentos/version"
 
 Node = Struct.new(:value, :next, :prev)
@@ -14,6 +16,9 @@ class Lista
 		@size = 0
 	end
 
+	# Returns the first object in the list.
+	#
+	# @return the object in the head of the list.
 	def get_head
 		if(!empty)
 			return @head.value
@@ -22,6 +27,9 @@ class Lista
 		end
 	end
 
+	# Returns the last object in the list.
+	#
+	# @return the object in the tail of the list.
 	def get_tail
 		if(!empty)
 			return @tail.value
@@ -30,6 +38,9 @@ class Lista
 		end
 	end
 
+	# Calculates if the list is empty or not.
+	#
+	# @return [boolean] true if the list is empty, false otherwise.
 	def empty
 	        if(@size==0)
 			true
@@ -38,6 +49,9 @@ class Lista
 	        end
 	end
 
+	# Adds a new element to the list by the start.
+	#
+	# @param value the object that will be added.
 	def push_head(value)
 		
 		if(empty)
@@ -52,6 +66,9 @@ class Lista
 		@size += 1
 	end
 
+	# Adds a new element to the list by the end.
+	#
+	# @param value the object that will be added.
 	def push_tail(value)
 		if(empty)
 			newNode = Node.new(value,nil,nil)
@@ -65,6 +82,7 @@ class Lista
 		@size += 1
 	end
 
+	# Removes a element at the start of the list.
 	def pop_head
 		elim_nodo = @head
 		if(!empty)
@@ -74,6 +92,7 @@ class Lista
 		end
 	end
 
+	# Removes a element at the end of the list.
 	def pop_tail
 		elim_nodo = @tail
 		if(!empty)
@@ -83,6 +102,7 @@ class Lista
 		end
 	end
 
+	# Implemented to be compatible with module Enumerable.
 	def each 
        		iterator = @head
        		while iterator != nil 

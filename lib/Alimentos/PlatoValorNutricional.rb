@@ -1,3 +1,5 @@
+# @author Alberto Delgado Soler
+
 require "Alimentos/version"
 
 class PlatoValorNutricional
@@ -12,6 +14,9 @@ class PlatoValorNutricional
 		@cantidades = Lista.new
 	end
 	
+	# Receives an array of food that is then converted to a Lista that is saved in the object.
+	#
+	# @param arrayAlimentos [Array] must contain instances of Alimento.
 	def add(arrayAlimentos)
 		if arrayAlimentos.is_a?(Array)
 			for alimento in arrayAlimentos do
@@ -27,10 +32,14 @@ class PlatoValorNutricional
 		return @plato.size
 	end
 
+	# Erase all food of PlatoValorNutricional
 	def erase
 		@plato = Lista.new
 	end
 
+	# Calculates the percentage of carb_hidr in the plate.
+	#
+	# @return [int] percentage of carb_hidr.
 	def porcentajeCarboHidratos
 		result = 0
 		iterador = @plato.head
@@ -50,6 +59,9 @@ class PlatoValorNutricional
 		return result
 	end
 
+	# Calculates the percentage of lipido in the plate.
+	#
+	# @return [int] percentage of lipido.
 	def porcentajeLipido
 		result = 0
 		iterador = @plato.head
@@ -69,6 +81,9 @@ class PlatoValorNutricional
 		return result
 	end
 
+	# Calculates the percentage of proteina in the plate.
+	#
+	# @return [int] percentage of proteina.
 	def porcentajeProteina
 		result = 0
 		iterador = @plato.head
@@ -88,6 +103,9 @@ class PlatoValorNutricional
 		return result
 	end
 
+	# Checks if there is any meat in the plate.
+	#
+	# @return [boolean] true if there is any meat in the plate, false otherwise.
 	def contieneCarne?
 		iterador = @plato.head
 		contieneCarne = false
@@ -102,6 +120,9 @@ class PlatoValorNutricional
 		return contieneCarne
 	end
 
+	# Checks if there is any food coming from animal in the plate.
+	#
+	# @return [boolean] true if there is any food coming from animal in the plate, false otherwise.
 	def contieneProcedenciaAnimal?
 		iterador = @plato.head
 		contieneProcedenciaAnimal = false
@@ -116,12 +137,18 @@ class PlatoValorNutricional
 		return contieneProcedenciaAnimal
 	end
 
+	# Calculates total caloric value of the plate.
+	#
+	# @return [int] percentage of proteina.
 	def valorCaloricoTotal
 		result = 0
 		plato.each{|i| result += i.valor_energetico}
 		result
 	end
 
+	# Converts the object into a string.
+	#
+	# @return [String] the object converted into the expected format.
 	def to_s
 
 		suma_gramos = 0
@@ -142,6 +169,9 @@ class PlatoValorNutricional
 		valorCaloricoTotal <=> other.valorCaloricoTotal
 	end
 
+	# Calculates energy impact rating.
+	#
+	# @return [int] the rating from 1 to 3.
 	def indice_impacto_energia
 		energia = 2;
 		if(valorCaloricoTotal < 670)
@@ -152,6 +182,9 @@ class PlatoValorNutricional
 		energia
 	end
 
+	# Calculates carbon footprint rating.
+	#
+	# @return [int] the rating from 1 to 3.
 	def indice_impacto_huella_carbono
 		huella = 2;
 		if(emisionesEfectoInvDiarias < 800)
@@ -162,12 +195,18 @@ class PlatoValorNutricional
 		huella
 	end
 
+	# Calculates nutritional footprint rating.
+	#
+	# @return [int] the rating from 1 to 3.
 	def huella_nutricional
 		
 		return (indice_impacto_huella_carbono+indice_impacto_energia)/2.0;
 
 	end
 
+	# Calculates daily greenhouse emissions.
+	#
+	# @return [int] daily greenhouse emissions.
 	def emisionesEfectoInvDiarias
 		iterador = @plato.head
 		emisionesEfectoInvDiarias = 0
@@ -180,10 +219,16 @@ class PlatoValorNutricional
 		return emisionesEfectoInvDiarias.round(2)
 	end
 
+	# Calculates yearly greenhouse emissions.
+	#
+	# @return [int] yearly greenhouse emissions.
 	def emisionesEfectoInvAnuales
 		return (emisionesEfectoInvDiarias*365).round(2)
 	end
 
+	# Calculates total terrain.
+	#
+	# @return [int] total terrain.
 	def terrenoTotal
 		iterador = @plato.head
 		terrenoTotal = 0

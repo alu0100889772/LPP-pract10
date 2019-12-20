@@ -1,3 +1,5 @@
+# @author Alberto Delgado Soler
+
 require "Alimentos/version"
 
 
@@ -11,6 +13,9 @@ class Alimento
 		@nombre, @proteina, @carb_hidr, @lipido, @gei, @terreno, @is_carne, @is_origen_animal = nombre, proteina, carb_hidr, lipido, gei, terreno, is_carne, is_origen_animal
 	end
 
+	# Converts the object into a string.
+	#
+	# @return [String] the object converted into the expected format.
 	def to_s
 		result = ""
 
@@ -24,7 +29,9 @@ class Alimento
 		result
 	end
 
-	# Devuelve el valor energético del alimento
+	# Calculates energy value of the food.
+	#
+	# @return [float] energy value of the food.
 	def valor_energetico
 		(proteina*4+carb_hidr*4+lipido*9).round(2)
 	end

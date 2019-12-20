@@ -1,3 +1,5 @@
+# @author Alberto Delgado Soler
+
 require "spec_helper"
 
 RSpec.describe Alimentos do

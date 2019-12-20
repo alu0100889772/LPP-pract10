@@ -1,3 +1,5 @@
+# @author Alberto Delgado Soler
+
 require "Alimentos/version"
 
 class PlatoEficienciaEnergetica < PlatoValorNutricional
@@ -6,6 +8,9 @@ class PlatoEficienciaEnergetica < PlatoValorNutricional
 		super(nombre)
 	end
 
+	# Converts the object into a string.
+	#
+	# @return [String] the object converted into the expected format.
 	def to_s
 
 		suma_gramos = 0
@@ -20,6 +25,10 @@ class PlatoEficienciaEnergetica < PlatoValorNutricional
 		result
 	end
 
+	# Implemented to be compatible with module Comparable, compares by emisionesEfectoInvDiarias.
+	#
+	# @param other [PlatoEficienciaEnergetica] the other PlatoEficienciaEnergetica to compare with.
+	# @return [int] -1, 0 or 1 depending on the result of the comparision.
 	def <=>(other)
 		emisionesEfectoInvDiarias <=> other.emisionesEfectoInvDiarias
 	end

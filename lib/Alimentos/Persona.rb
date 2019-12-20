@@ -1,6 +1,8 @@
+# @author Alberto Delgado Soler
+
 require "Alimentos/version"
 class Persona
-	attr_reader :sexo, :comida_hoy, :impacto_ambiental_kcal, :impacto_ambiental_proteina, :comida_hoy
+	attr_reader :sexo, :comida_hoy, :impacto_ambiental_kcal, :impacto_ambiental_proteina
 
 	# sexo 0: hombre, 1: mujer
 
