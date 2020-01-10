@@ -1,4 +1,4 @@
-# Alimentos
+# Alimentos [![Build Status](https://travis-ci.com/alu0100889772/LPP-pract10.svg?branch=master)](https://travis-ci.com/alu0100889772/LPP-pract10)
 
 Definición de una clase Alimento y arias formas de uso para el control de una dieta sana.
 
